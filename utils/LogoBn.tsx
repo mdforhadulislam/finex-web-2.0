@@ -2,7 +2,11 @@ import LOGO_BN from "@/components/assets/logo-bn.png";
 import LOGO_FOOTER_BN from "@/components/assets/logo-footer-bn.png";
 import Link from "next/link";
 
-const LogoBn = ({ link, imageStyle, isFooter = false }) => {
+const LogoBn: React.FC<{
+  link: string,
+  imageStyle: string,
+  isFooter: boolean,
+}>  = ({ link, imageStyle, isFooter = false }) => {
   return (
     <Link
       href={link || "/"}

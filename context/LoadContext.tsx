@@ -9,7 +9,7 @@ export const LoadContext = createContext({
 
 export const useLoad = () => useContext(LoadContext);
 
-export default function LoadContextProvider({ children }) {
+const LoadContextProvider: React.FC<{ children: React.ReactNode }> =({ children })=> {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadingStart = () => {
@@ -29,3 +29,5 @@ export default function LoadContextProvider({ children }) {
     <LoadContext.Provider value={contextValue}>{children}</LoadContext.Provider>
   );
 }
+
+export default LoadContextProvider

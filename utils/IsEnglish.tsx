@@ -1,7 +1,7 @@
 "use client"
 import { useLang } from "@/context/LangContext";
 
-const IsEnglish = ({ className, children }) => {
+const IsEnglish : React.FC<{className: string, children: React.ReactNode,  }>= ({ className="", children }) => {
   const languge = useLang();
 
   return (

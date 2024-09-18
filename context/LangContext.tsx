@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { createContext, useContext, useState } from "react";
 
 export const LangContext = createContext({
@@ -10,7 +10,9 @@ export const LangContext = createContext({
 
 export const useLang = () => useContext(LangContext);
 
-export default function LangContextProvider({ children }) {
+const LangContextProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isBangla, setIsBangla] = useState(false);
   const [isEnglish, setIsEnglish] = useState(true);
 
@@ -33,4 +35,6 @@ export default function LangContextProvider({ children }) {
   return (
     <LangContext.Provider value={contextValue}>{children}</LangContext.Provider>
   );
-}
+};
+
+export default LangContextProvider;

@@ -2,7 +2,11 @@ import Link from "next/link";
 import LOGO_EN from "@/components/assets/logo-en.png";
 import LOGO_FOOTER_EN from "@/components/assets/logo-footer-en.png";
 
-const Logo = ({ link, imageStyle, isFooter = false }) => {
+const Logo: React.FC<{
+  link: string,
+  imageStyle: string,
+  isFooter: boolean,
+}> = ({ link, imageStyle, isFooter }) => {
   return (
     <Link
       href={link || "/"}

@@ -89,10 +89,10 @@ export default function NavBar() {
         }`}
       >
         <IsEnglish className={"mr-1"}>
-          <Logo link={"/"} imageStyle={""} />
+          <Logo link={"/"} imageStyle={""} isFooter={false} />
         </IsEnglish>
         <IsBangla className={"mr-1"}>
-          <LogoBn link={"/"} imageStyle={""} />
+          <LogoBn link={"/"} imageStyle={""} isFooter={false} />
         </IsBangla>
 
         <div
@@ -105,7 +105,7 @@ export default function NavBar() {
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <IsEnglish>Home</IsEnglish>
+                    <IsEnglish className="">Home</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>হোম</IsBangla>
                   </NavigationMenuLink>
                 </Link>
@@ -113,14 +113,14 @@ export default function NavBar() {
               <NavigationMenuItem>
                 <Link href="/price" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <IsEnglish>Price</IsEnglish>
+                    <IsEnglish className="">Price</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>চার্জ</IsBangla>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
-                  <IsEnglish>About</IsEnglish>
+                  <IsEnglish className="">About</IsEnglish>
                   <IsBangla className={"bfont text-[21px]"}>
                     আমাদের সম্পর্কে
                   </IsBangla>
@@ -135,15 +135,17 @@ export default function NavBar() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-defult/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          <Logo link={"/"} imageStyle="" />
+                          <Logo link={"/"} imageStyle="" isFooter={false} />
                           <div className="mb-2 mt-4 text-sm font-medium">
-                            <IsEnglish>Faster Int. Express</IsEnglish>
+                            <IsEnglish className="">
+                              Faster Int. Express
+                            </IsEnglish>
                             <IsBangla className={"bfont text-[21px]"}>
                               ফাস্টার ইন্ট. এক্সপ্রেস
                             </IsBangla>
                           </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            <IsEnglish>
+                            <IsEnglish className="">
                               Beautifully designed components built with Radix
                               UI and Tailwind CSS.
                             </IsEnglish>
@@ -157,13 +159,13 @@ export default function NavBar() {
                       </NavigationMenuLink>
                     </li>
 
-                    <IsEnglish>
+                    <IsEnglish className="">
                       <ListItem href="/docs" title="Why Finex">
                         Re-usable components built using Radix UI and Tailwind
                         CSS.
                       </ListItem>
                     </IsEnglish>
-                    <IsBangla>
+                    <IsBangla className="">
                       <ListItem href="/docs" title="কেনো ফিনেক্স">
                         অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
                         স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
@@ -171,7 +173,7 @@ export default function NavBar() {
                       </ListItem>
                     </IsBangla>
 
-                    <IsEnglish>
+                    <IsEnglish className="">
                       <ListItem
                         href="/docs/primitives/typography"
                         title="Work Processes"
@@ -180,7 +182,7 @@ export default function NavBar() {
                       </ListItem>
                     </IsEnglish>
 
-                    <IsBangla>
+                    <IsBangla className="">
                       <ListItem
                         href="/docs/primitives/typography"
                         title="কাজের প্রক্রিয়া"
@@ -191,12 +193,12 @@ export default function NavBar() {
                       </ListItem>
                     </IsBangla>
 
-                    <IsEnglish>
+                    <IsEnglish className="">
                       <ListItem href="/docs/installation" title="Our Services">
                         How to install dependencies and structure your app.
                       </ListItem>
                     </IsEnglish>
-                    <IsBangla>
+                    <IsBangla className="">
                       <ListItem
                         href="/docs/installation"
                         title="আমাদের সেবা সমূহ"
@@ -207,7 +209,7 @@ export default function NavBar() {
                       </ListItem>
                     </IsBangla>
 
-                    <IsEnglish>
+                    <IsEnglish className="">
                       <ListItem
                         href="/docs/primitives/typography"
                         title="Our Team Member"
@@ -215,7 +217,7 @@ export default function NavBar() {
                         Styles for headings, paragraphs, lists...etc
                       </ListItem>
                     </IsEnglish>
-                    <IsBangla>
+                    <IsBangla className="">
                       <ListItem
                         href="/docs/primitives/typography"
                         title="আমাদের সদস্য"
@@ -231,7 +233,7 @@ export default function NavBar() {
               <NavigationMenuItem>
                 <Link href="/blog" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <IsEnglish>Blog</IsEnglish>
+                    <IsEnglish className="">Blog</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>
                       প্রতিদিনের ব্লগ
                     </IsBangla>
@@ -241,7 +243,7 @@ export default function NavBar() {
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    <IsEnglish>Contact</IsEnglish>
+                    <IsEnglish className="">Contact</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>যোগাযোগ</IsBangla>
                   </NavigationMenuLink>
                 </Link>
@@ -322,7 +324,7 @@ export default function NavBar() {
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
                 >
-                  <IsEnglish>Home</IsEnglish>
+                  <IsEnglish className="">Home</IsEnglish>
                   <IsBangla className={"bfont text-[21px]"}>হোম</IsBangla>
                 </NavigationMenuLink>
               </Link>
@@ -333,7 +335,7 @@ export default function NavBar() {
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
                 >
-                  <IsEnglish>Price</IsEnglish>
+                  <IsEnglish className="">Price</IsEnglish>
                   <IsBangla className={"bfont text-[21px]"}>চার্জ</IsBangla>
                 </NavigationMenuLink>
               </Link>
@@ -343,7 +345,7 @@ export default function NavBar() {
                 style={{ width: "100%", textAlign: "left", display: "block" }}
                 className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors  disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
               >
-                <IsEnglish>About</IsEnglish>
+                <IsEnglish className="">About</IsEnglish>
                 <IsBangla className={"bfont text-[21px]"}>
                   আমাদের সম্পর্কে
                 </IsBangla>
@@ -357,24 +359,24 @@ export default function NavBar() {
                       className=" hidden sm:flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md "
                       href="/"
                     >
-                      <Logo link={"/"} imageStyle="" />
+                      <Logo link={"/"} imageStyle="" isFooter={false} />
                     </a>
                   </NavigationMenuLink>
 
-                  <IsEnglish>
+                  <IsEnglish className="">
                     <ListItem href="/docs" title="Why Finex">
                       Re-usable components built using Radix UI and Tailwind
                       CSS.
                     </ListItem>
                   </IsEnglish>
-                  <IsBangla>
+                  <IsBangla className="">
                     <ListItem href="/docs" title="কেনো ফিনেক্স">
                       অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি স্বয়ংক্রিয়ভাবে
                       পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ প্রদান করে
                     </ListItem>
                   </IsBangla>
 
-                  <IsEnglish>
+                  <IsEnglish className="">
                     <ListItem
                       href="/docs/primitives/typography"
                       title="Work Processes"
@@ -383,7 +385,7 @@ export default function NavBar() {
                     </ListItem>
                   </IsEnglish>
 
-                  <IsBangla>
+                  <IsBangla className="">
                     <ListItem
                       href="/docs/primitives/typography"
                       title="কাজের প্রক্রিয়া"
@@ -393,12 +395,12 @@ export default function NavBar() {
                     </ListItem>
                   </IsBangla>
 
-                  <IsEnglish>
+                  <IsEnglish className="">
                     <ListItem href="/docs/installation" title="Our Services">
                       How to install dependencies and structure your app.
                     </ListItem>
                   </IsEnglish>
-                  <IsBangla>
+                  <IsBangla className="">
                     <ListItem
                       href="/docs/installation"
                       title="আমাদের সেবা সমূহ"
@@ -408,7 +410,7 @@ export default function NavBar() {
                     </ListItem>
                   </IsBangla>
 
-                  <IsEnglish>
+                  <IsEnglish className="">
                     <ListItem
                       href="/docs/primitives/typography"
                       title="Our Team Member"
@@ -416,7 +418,7 @@ export default function NavBar() {
                       Styles for headings, paragraphs, lists...etc
                     </ListItem>
                   </IsEnglish>
-                  <IsBangla>
+                  <IsBangla className="">
                     <ListItem
                       href="/docs/primitives/typography"
                       title="আমাদের সদস্য"
@@ -434,7 +436,7 @@ export default function NavBar() {
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
                 >
-                  <IsEnglish>Blog</IsEnglish>
+                  <IsEnglish className="">Blog</IsEnglish>
                   <IsBangla className={"bfont text-[21px]"}>
                     প্রতিদিনের ব্লগ
                   </IsBangla>
@@ -447,7 +449,7 @@ export default function NavBar() {
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
                 >
-                  <IsEnglish>Contact</IsEnglish>
+                  <IsEnglish className="">Contact</IsEnglish>
                   <IsBangla className={"bfont text-[21px]"}>যোগাযোগ</IsBangla>
                 </NavigationMenuLink>
               </Link>
