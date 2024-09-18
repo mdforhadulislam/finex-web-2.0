@@ -142,7 +142,7 @@ const FooterBar = () => {
 
               <IsEnglish className="">
                 <Link
-                  href={"https://whatsapp.com/channel/0029Vaf5cmcAojYz6lCqjD3A"}
+                  href={"https://whatsapp.com/channel/0029Vaf5cmcAojYz6lCqjD3A"} target="_blank"
                 >
                   <Button className="bg-white text-gray-800 p-5 hover:bg-gray-100 rounded-full text-base pl-[6px] pr-3 flex justify-center align-middle items-center gap-1">
                     <SiWhatsapp className="w-8 h-8 p-[8px] bg-green-600 text-white rounded-full" />
@@ -151,7 +151,7 @@ const FooterBar = () => {
                 </Link>
               </IsEnglish>
               <IsBangla className="">
-                <Link href="https://whatsapp.com/channel/0029Vaf5cmcAojYz6lCqjD3A">
+                <Link href="https://whatsapp.com/channel/0029Vaf5cmcAojYz6lCqjD3A"  target="_blank">
                   <Button className="bg-white text-gray-800 p-5 hover:bg-gray-100 rounded-full text-[21px] pl-[6px] pr-3 flex justify-center align-middle items-center gap-1 bfont">
                     <SiWhatsapp className="w-8 h-8 p-[8px] bg-green-600 text-white rounded-full" />
                     হোয়াটস্যাপ চ্যানেলে যোগ দিন
@@ -228,18 +228,18 @@ const FooterBar = () => {
               </IsBangla>
 
               <div className="flex justify-start align-middle items-center gap-3">
-                <div className="w-10 h-10 p-1 bg-white rounded-full shadow-3xl flex justify-center align-middle items-center ">
+                <Link href={"https://www.facebook.com/finex.int.ex/"} target="_blank" className="w-10 h-10 p-1 bg-white rounded-full shadow-3xl flex justify-center align-middle items-center ">
                   <FaFacebook className="w-8 h-8 text-blue-600 shadow-3xl" />
-                </div>
-                <div className="w-10 h-10 p-[6px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center">
+                </Link>
+                <Link href={"https://www.instagram.com/finex.int.ex/"} target="_blank" className="w-10 h-10 p-[6px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center">
                   <LuInstagram className="w-8 h-8 text-red-600 shadow-3xl" />
-                </div>
-                <div className="w-10 h-10 p-[6px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center">
+                </Link>
+                <Link  href={"https://x.com/finexintex/"} target="_blank" className="w-10 h-10 p-[6px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center">
                   <FaTwitter className="w-8 h-8 text-blue-600 shadow-3xl" />
-                </div>
-                <div className="w-10 h-10 p-[7px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center">
+                </Link>
+                <Link  href={"https://www.linkedin.com/in/finex-int-ex/"}target="_blank" className="w-10 h-10 p-[7px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center">
                   <IoLogoLinkedin className="w-8 h-8 text-blue-600 shadow-3xl" />
-                </div>
+                </Link>
               </div>
             </div>
             <div className="group lg:border-r border-white border-dashed">
