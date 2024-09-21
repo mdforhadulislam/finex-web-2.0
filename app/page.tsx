@@ -1,10 +1,14 @@
-"use client"
-import { Zoom } from "react-awesome-reveal";
-
+"use client";
+import HomeBanarSection from "@/components/Home/HomeBanarSection";
+import HomeCustomerReview from "@/components/Home/HomeCustomerReview";
+import HomeHeroSection from "@/components/Home/HomeHeroSection";
 
 export default function Home() {
-  return <div className="h-[1600px]">
-     <Zoom className="pt-[900px] z-10"  triggerOnce>
-      <p>I am an animated text fgkphbjfg  doxfgkplo jrfdsg joperjtg ji ij4eirtgjdrk j tjeritgjdi je tjid ji jtir </p>
-    </Zoom> </div>;
+  return (
+    <>
+      <HomeHeroSection />
+      <HomeBanarSection />
+      <HomeCustomerReview />
+    </>
+  );
 }
