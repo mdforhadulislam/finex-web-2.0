@@ -14,7 +14,7 @@ const Logo: React.FC<{
     >
       <img
         className={`${imageStyle ? imageStyle : "w-[140px] h-[45px] "} `}
-        src={isFooter ? "./logo-footer-en.png" : "./logo-en.png"}
+        src={isFooter ? "/logo-footer-en.png" : "/logo-en.png"}
         alt="logo"
       />
     </Link>

@@ -14,7 +14,7 @@ const LogoBn: React.FC<{
     >
       <img
         className={`${imageStyle ? imageStyle : "w-[140px] h-[45px] "} `}
-        src={isFooter ? "./logo-footer-bn.png" : "./logo-bn.png"}
+        src={isFooter ? "/logo-footer-bn.png" : "/logo-bn.png"}
         alt="logo"
       />
     </Link>
