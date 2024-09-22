@@ -1,12 +1,10 @@
-import LOGO_BN from "@/components/assets/logo-bn.png";
-import LOGO_FOOTER_BN from "@/components/assets/logo-footer-bn.png";
 import Link from "next/link";
 
 const LogoBn: React.FC<{
-  link: string,
-  imageStyle: string,
-  isFooter: boolean,
-}>  = ({ link, imageStyle, isFooter = false }) => {
+  link: string;
+  imageStyle: string;
+  isFooter: boolean;
+}> = ({ link, imageStyle, isFooter = false }) => {
   return (
     <Link
       href={link || "/"}
@@ -16,7 +14,7 @@ const LogoBn: React.FC<{
     >
       <img
         className={`${imageStyle ? imageStyle : "w-[140px] h-[45px] "} `}
-        src={isFooter ? LOGO_FOOTER_BN.src : LOGO_BN.src}
+        src={isFooter ? "./logo-footer-bn.png" : "./logo-bn.png"}
         alt="logo"
       />
     </Link>

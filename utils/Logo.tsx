@@ -1,11 +1,9 @@
 import Link from "next/link";
-import LOGO_EN from "@/components/assets/logo-en.png";
-import LOGO_FOOTER_EN from "@/components/assets/logo-footer-en.png";
 
 const Logo: React.FC<{
-  link: string,
-  imageStyle: string,
-  isFooter: boolean,
+  link: string;
+  imageStyle: string;
+  isFooter: boolean;
 }> = ({ link, imageStyle, isFooter }) => {
   return (
     <Link
@@ -16,7 +14,7 @@ const Logo: React.FC<{
     >
       <img
         className={`${imageStyle ? imageStyle : "w-[140px] h-[45px] "} `}
-        src={isFooter ? LOGO_FOOTER_EN.src : LOGO_EN.src}
+        src={isFooter ? "./logo-footer-en.png" : "./logo-en.png"}
         alt="logo"
       />
     </Link>

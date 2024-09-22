@@ -17,7 +17,7 @@ const HomeBanarSection = () => {
           className=""
           plugins={[
             Autoplay({
-              delay: 2000,
+              // delay: 5000,
             }),
           ]}
         >

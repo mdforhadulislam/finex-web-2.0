@@ -6,6 +6,9 @@ import IsEnglish from "@/utils/IsEnglish";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 import { Card, CardContent } from "../ui/card";
+import { RxAvatar } from "react-icons/rx";
+import { Button } from "../ui/button";
+import { FaStar } from "react-icons/fa6";
 
 const HomeCustomerReview = () => {
   return (
@@ -79,7 +82,7 @@ const HomeCustomerReview = () => {
 
         
         <IsBangla className="w-full h-auto flex justify-center align-middle items-center flex-col gap-8 py-5">
-          <h1 className="text-2xl sm:text-5xl md:text-7xl font-bold text-defult bfont text-center">আমাদের গ্রাহকদের আমাদের সম্পর্কে কি বলে  তা শুনুন!</h1>
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-defult bfont text-center">আমাদের গ্রাহকদের আমাদের সম্পর্কে কি বলে  তা শুনুন!</h1>
 
           <p className=" text-[22px] font-light text-gray-800 px-8 sm:px-24 md:px-36 lg:px-44 text-center bfont leading-6">ফাস্টার ইন্টারন্যাশনাল এক্সপ্রেস-(ফাইনেক্স) পরিষেবার ক্লায়েন্ট এবং তাদের ফলাফল হল আমাদের পদ্ধতিগুলি কাজ করার সেরা প্রমাণ। আমরা মিডিয়া এবং আমাদের সহকর্মীদের কাছ থেকে অসংখ্য পুরস্কার এবং প্রশংসা পেয়েছি।</p>
         </IsBangla>
@@ -89,11 +92,24 @@ const HomeCustomerReview = () => {
         <Carousel className="w-full">
       <CarouselContent className="-ml-1">
         {Array.from({ length: 6 }).map((_, index) => (
-          <CarouselItem key={index} className="pl-1 sm:basis-1/2 lg:basis-1/3">
+          <CarouselItem key={index} className="pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
             <div className="p-2">
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-4 ">
-                 <p className="line-clamp-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium delectus dicta tempora, voluptatum, consequatur facere accusantium unde vel fugit consectetur distinctio. Iste est eaque vero minima accusantium aliquam eos aperiam sit? Hic repudiandae fugit doloremque exercitationem similique blanditiis nesciunt qui.</p>
+                <CardContent className="flex flex-col aspect-square items-center justify-center p-4 gap-5 ">
+                  
+                  <RxAvatar className="w-20 h-20 p-1 rounded-full  border-[2px] border-defult" />
+                  <h2 className="text-lg font-medium">Forhad Ahmed</h2>
+                  <div className="w-full h-auto flex justify-center align-middle items-center gap-1 -mt-6 text-orange-400">
+                  <FaStar className="w-6 h-6" />
+                  <FaStar className="w-6 h-6" />
+                  <FaStar className="w-6 h-6" />
+                  <FaStar className="w-6 h-6" />
+                  <FaStar className="w-6 h-6" />
+                  </div>
+
+                 <p className="line-clamp-4 text-center text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium delectus dicta tempora, voluptatum, consequatur facere accusantium unde vel fugit consectetur distinctio. Iste est eaque vero minima accusantium aliquam eos aperiam sit? Hic repudiandae fugit doloremque exercitationem similique blanditiis nesciunt qui.</p>
+
+                 <Button className=" px-5 rounded-full py-3 bg-defult hover:bg-defult/80">Read More</Button>
                 </CardContent>
               </Card>
             </div>
