@@ -1,8 +1,14 @@
+import WhyFinexBodySection from '@/components/About/WhyFinexBodySection'
+import WhyFinexHeaderSection from '@/components/About/WhyFinexHeaderSection'
 import React from 'react'
 
 const WhyFinex = () => {
   return (
-    <div>WhyFinex</div>
+    <>
+    <WhyFinexHeaderSection />
+    <WhyFinexBodySection />
+    
+    </>
   )
 }
 

@@ -27,7 +27,7 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -49,7 +49,7 @@ const ListItem = React.forwardRef<
           >
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
@@ -103,7 +103,7 @@ export default function NavBar() {
           <NavigationMenu>
             <NavigationMenuList className="w-auto flex justify-center align-middle gap-2">
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
+                <Link href="/" legacyBehavior passHref onClick={()=>{setIsMenuVisible(false)}}>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Home</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>হোম</IsBangla>
@@ -111,7 +111,7 @@ export default function NavBar() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/price" legacyBehavior passHref>
+                <Link href="/price" legacyBehavior passHref  onClick={()=>{setIsMenuVisible(false)}}>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Price</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>চার্জ</IsBangla>
@@ -131,9 +131,9 @@ export default function NavBar() {
                   <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-4">
                       <NavigationMenuLink asChild>
-                        <a
+                        <Link
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-defult/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
+                          href="/"  onClick={()=>{setIsMenuVisible(false)}}
                         >
                           <Logo link={"/"} imageStyle="" isFooter={false} />
                           <div className="mb-2 mt-4 text-sm font-medium">
@@ -155,18 +155,18 @@ export default function NavBar() {
                               বাক্যাংশ প্রদান করে
                             </IsBangla>
                           </p>
-                        </a>
+                        </Link>
                       </NavigationMenuLink>
                     </li>
 
                     <IsEnglish className="">
-                      <ListItem href="/docs" title="Why Finex">
+                      <ListItem href="/about/why-finex" title="Why Finex"  onClick={()=>{setIsMenuVisible(false)}}>
                         Re-usable components built using Radix UI and Tailwind
                         CSS.
                       </ListItem>
                     </IsEnglish>
                     <IsBangla className="">
-                      <ListItem href="/docs" title="কেনো ফিনেক্স">
+                      <ListItem href="/about/why-finex" title="কেন ফিনেক্স"  onClick={()=>{setIsMenuVisible(false)}}>
                         অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
                         স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
                         প্রদান করে
@@ -175,8 +175,8 @@ export default function NavBar() {
 
                     <IsEnglish className="">
                       <ListItem
-                        href="/docs/primitives/typography"
-                        title="Work Processes"
+                        href="/about/work-process"
+                        title="Work Processes"  onClick={()=>{setIsMenuVisible(false)}}
                       >
                         Styles for headings, paragraphs, lists...etc
                       </ListItem>
@@ -184,8 +184,8 @@ export default function NavBar() {
 
                     <IsBangla className="">
                       <ListItem
-                        href="/docs/primitives/typography"
-                        title="কাজের প্রক্রিয়া"
+                        href="/about/work-process"
+                        title="কাজের প্রক্রিয়া"  onClick={()=>{setIsMenuVisible(false)}}
                       >
                         অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
                         স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
@@ -194,14 +194,14 @@ export default function NavBar() {
                     </IsBangla>
 
                     <IsEnglish className="">
-                      <ListItem href="/docs/installation" title="Our Services">
+                      <ListItem href="/about/our-services" title="Our Services"  onClick={()=>{setIsMenuVisible(false)}}>
                         How to install dependencies and structure your app.
                       </ListItem>
                     </IsEnglish>
                     <IsBangla className="">
                       <ListItem
-                        href="/docs/installation"
-                        title="আমাদের সেবা সমূহ"
+                        href="/about/our-services"
+                        title="আমাদের সেবা সমূহ"  onClick={()=>{setIsMenuVisible(false)}}
                       >
                         অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
                         স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
@@ -211,16 +211,16 @@ export default function NavBar() {
 
                     <IsEnglish className="">
                       <ListItem
-                        href="/docs/primitives/typography"
-                        title="Our Team Member"
+                        href="/about/our-team-member"
+                        title="Our Team Member"  onClick={()=>{setIsMenuVisible(false)}}
                       >
                         Styles for headings, paragraphs, lists...etc
                       </ListItem>
                     </IsEnglish>
                     <IsBangla className="">
                       <ListItem
-                        href="/docs/primitives/typography"
-                        title="আমাদের সদস্য"
+                        href="/about/our-team-member"
+                        title="আমাদের সদস্য"  onClick={()=>{setIsMenuVisible(false)}}
                       >
                         অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
                         স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
@@ -231,7 +231,7 @@ export default function NavBar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/blog" legacyBehavior passHref>
+                <Link href="/blog" legacyBehavior passHref  onClick={()=>{setIsMenuVisible(false)}}>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Blog</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>
@@ -241,7 +241,7 @@ export default function NavBar() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
+                <Link href="/contact" legacyBehavior passHref  onClick={()=>{setIsMenuVisible(false)}}>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Contact</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>যোগাযোগ</IsBangla>
@@ -319,7 +319,7 @@ export default function NavBar() {
         <NavigationMenu className="bg-white p-2 rounded-md">
           <NavigationMenuList className="w-full flex flex-col justify-center align-middle gap-1 ">
             <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
+              <Link href="/" legacyBehavior passHref  onClick={()=>{setIsMenuVisible(false)}}>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
@@ -330,7 +330,7 @@ export default function NavBar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/price" legacyBehavior passHref>
+              <Link href="/price" legacyBehavior passHref  onClick={()=>{setIsMenuVisible(false)}}>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
@@ -355,22 +355,22 @@ export default function NavBar() {
               >
                 <ul className="grid gap-1 p-2  lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <NavigationMenuLink asChild>
-                    <a
+                    <Link  onClick={()=>{setIsMenuVisible(false)}}
                       className=" hidden sm:flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md "
                       href="/"
                     >
                       <Logo link={"/"} imageStyle="" isFooter={false} />
-                    </a>
+                    </Link>
                   </NavigationMenuLink>
 
                   <IsEnglish className="">
-                    <ListItem href="/docs" title="Why Finex">
+                    <ListItem href="/about/why-finex" title="Why Finex"  onClick={()=>{setIsMenuVisible(false)}}>
                       Re-usable components built using Radix UI and Tailwind
                       CSS.
                     </ListItem>
                   </IsEnglish>
                   <IsBangla className="">
-                    <ListItem href="/docs" title="কেনো ফিনেক্স">
+                    <ListItem href="/about/why-finex" title="কেন ফিনেক্স"  onClick={()=>{setIsMenuVisible(false)}}>
                       অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি স্বয়ংক্রিয়ভাবে
                       পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ প্রদান করে
                     </ListItem>
@@ -378,8 +378,8 @@ export default function NavBar() {
 
                   <IsEnglish className="">
                     <ListItem
-                      href="/docs/primitives/typography"
-                      title="Work Processes"
+                      href="/about/work-process"
+                      title="Work Processes"  onClick={()=>{setIsMenuVisible(false)}}
                     >
                       Styles for headings, paragraphs, lists...etc
                     </ListItem>
@@ -387,7 +387,7 @@ export default function NavBar() {
 
                   <IsBangla className="">
                     <ListItem
-                      href="/docs/primitives/typography"
+                      href="/about/work-process"  onClick={()=>{setIsMenuVisible(false)}}
                       title="কাজের প্রক্রিয়া"
                     >
                       অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি স্বয়ংক্রিয়ভাবে
@@ -396,14 +396,14 @@ export default function NavBar() {
                   </IsBangla>
 
                   <IsEnglish className="">
-                    <ListItem href="/docs/installation" title="Our Services">
+                    <ListItem href="/about/our-services" title="Our Services"  onClick={()=>{setIsMenuVisible(false)}}>
                       How to install dependencies and structure your app.
                     </ListItem>
                   </IsEnglish>
                   <IsBangla className="">
                     <ListItem
-                      href="/docs/installation"
-                      title="আমাদের সেবা সমূহ"
+                      href="/about/our-services"
+                      title="আমাদের সেবা সমূহ"  onClick={()=>{setIsMenuVisible(false)}}
                     >
                       অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি স্বয়ংক্রিয়ভাবে
                       পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ প্রদান করে
@@ -412,16 +412,16 @@ export default function NavBar() {
 
                   <IsEnglish className="">
                     <ListItem
-                      href="/docs/primitives/typography"
-                      title="Our Team Member"
+                      href="/about/our-team-member"
+                      title="Our Team Member"  onClick={()=>{setIsMenuVisible(false)}}
                     >
                       Styles for headings, paragraphs, lists...etc
                     </ListItem>
                   </IsEnglish>
                   <IsBangla className="">
                     <ListItem
-                      href="/docs/primitives/typography"
-                      title="আমাদের সদস্য"
+                      href="/about/our-team-member"
+                      title="আমাদের সদস্য"  onClick={()=>{setIsMenuVisible(false)}}
                     >
                       অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি স্বয়ংক্রিয়ভাবে
                       পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ প্রদান করে
@@ -431,7 +431,7 @@ export default function NavBar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/blog" legacyBehavior passHref>
+              <Link href="/blog" legacyBehavior passHref  onClick={()=>{setIsMenuVisible(false)}}>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
@@ -444,7 +444,7 @@ export default function NavBar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/contact" legacyBehavior passHref>
+              <Link href="/contact" legacyBehavior passHref  onClick={()=>{setIsMenuVisible(false)}}>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}

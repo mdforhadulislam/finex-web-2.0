@@ -1,8 +1,11 @@
+import OurTeamMemberSection from '@/components/About/OurTeamMemberSection'
 import React from 'react'
 
 const OurTeamMember = () => {
   return (
-    <div>OurTeamMember</div>
+    <>
+      <OurTeamMemberSection />
+    </>
   )
 }
 
