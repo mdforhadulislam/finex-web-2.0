@@ -20,8 +20,7 @@ import { Button } from "../ui/button";
 import { navigationMenuTriggerStyle } from "../ui/navigation-menu";
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">,HTMLAnchorElement, InternalLinkProps
+  HTMLAnchorElement, InternalLinkProps
 >(({ className, title,href="/", children, ...props }, ref) => {
   const { isBangla } = useLang();
   return (
