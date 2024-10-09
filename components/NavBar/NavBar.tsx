@@ -30,7 +30,7 @@ interface InternalLinkProps {
 
 const ListItem = React.forwardRef<
   HTMLAnchorElement, InternalLinkProps
->(({ className, title,href="/", children, ...props }, ref) => {
+>(({ className, title,href="/",onClick, children, ...props }, ref) => {
   const { isBangla } = useLang();
   return (
     <li>
