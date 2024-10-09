@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <HomeHeroSection />
       <HomeBanarSection />
-      <HomeSubscriptionSection />
+{/*       <HomeSubscriptionSection /> */}
       <HomeCustomerReview />
     </>
   );
