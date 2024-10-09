@@ -19,6 +19,14 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { navigationMenuTriggerStyle } from "../ui/navigation-menu";
 
+
+interface InternalLinkProps {
+    href?: string; // Optional href
+    className?: string; // Optional className
+    title?: string; // Optional title
+    children: React.ReactNode; // Children can be any React node
+}
+
 const ListItem = React.forwardRef<
   HTMLAnchorElement, InternalLinkProps
 >(({ className, title,href="/", children, ...props }, ref) => {
