@@ -24,6 +24,7 @@ interface InternalLinkProps {
     href?: string; // Optional href
     className?: string; // Optional className
     title?: string; // Optional title
+  onClick?: () => void;
     children: React.ReactNode; // Children can be any React node
 }
 
