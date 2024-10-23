@@ -19,10 +19,24 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { navigationMenuTriggerStyle } from "../ui/navigation-menu";
 
+
+interface InternalLinkProps {
+    href?: string; // Optional href
+    className?: string; // Optional className
+    title?: string; // Optional title
+  onClick?: () => void;
+    children: React.ReactNode; // Children can be any React node
+}
+
 const ListItem = React.forwardRef<
+<<<<<<< HEAD
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & { href: string }
 >(({ className, title, children, href, ...props }, ref) => {
+=======
+  HTMLAnchorElement, InternalLinkProps
+>(({ className, title,href="/",onClick, children, ...props }, ref) => {
+>>>>>>> 039e23715985d5dc7df770d0c13aacdf26254a8b
   const { isBangla } = useLang();
   return (
     <li>
@@ -34,6 +48,7 @@ const ListItem = React.forwardRef<
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
+          href={href}
           {...props}
         >
           <div
