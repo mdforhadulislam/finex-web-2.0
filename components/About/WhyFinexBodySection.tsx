@@ -2,6 +2,18 @@ import IsBangla from "@/utils/IsBangla";
 import IsEnglish from "@/utils/IsEnglish";
 import React from "react";
 
+const HelpStep: React.FC<{ number: string; title: string }> = ({
+  number,
+  title,
+}) => {
+  return (
+    <div className="w-full h-auto p-1 flex justify-center align-middle items-center gap-4 flex-col group">
+      <h1 className="text-lg font-medium text-gray-200 text-center group-hover:text-white transition-all duration-300">{title}</h1>
+      <h1 className="text-5xl font-bold text-gray-400 group-hover:text-white transition-all duration-300">{number}</h1>
+    </div>
+  );
+};
+
 const WhyFinexBodySection = () => {
   return (
     <div className="w-full h-auto">
@@ -60,7 +72,7 @@ const WhyFinexBodySection = () => {
 
             {/* Bangla text */}
             <IsBangla className="">
-              <p className="w-full h-auto text-xl text-gray-900 bfont">
+              <p className="w-full h-auto text-2xl text-gray-900 bfont">
                 আমাদের অটুট পেশাদারিত্ব এবং ব্যক্তিগত যত্ন সহ ঝামেলা-মুক্ত
                 শিপিংয়ের প্রতি আমাদের প্রতিশ্রুতি আমাদের আলাদা করে। একটি
                 স্বাধীন কুরিয়ার পরিষেবা প্রদানকারী হিসাবে, আমরা সর্বোচ্চ স্তরের
@@ -82,10 +94,7 @@ const WhyFinexBodySection = () => {
       </div>
 
       <div className="w-full h-auto py-20">
-        <div
-          className="w-full h-auto bg-cover bg-no-repeat bg-center py-14"
-          style={{ backgroundImage: "url(/support.png)" }}
-        >
+        <div className="w-full h-auto bg-defult py-14">
           <div className="lg:container sm:p-2 p-4 px-2 m-auto">
             {/* Text section */}
             <div className="w-full  h-auto p-5">
@@ -107,13 +116,17 @@ const WhyFinexBodySection = () => {
                 </div>
               </IsBangla>
 
-
-
-
-
-
-
-              
+              <div className="w-full h-auto p-5 pt-20">
+                <div className=" w-full h-auto grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 items-end">
+                  <HelpStep number={"01"} title={"Simple & Instant Rate Quotation"} />
+                  <HelpStep number={"02"} title={"Hassle-Free Shipping Process"} />
+                  <HelpStep number={"03"} title={"Pickup & Packing Facility"} />
+                  <HelpStep number={"04"} title={"Simple Documentation"} />
+                  <HelpStep number={"05"} title={"Free Insurance Coverage*"} />
+                  <HelpStep number={"06"} title={"Dedicated Customer Support"} />
+                  <HelpStep number={"07"} title={"Simplified Customs Procedure"} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

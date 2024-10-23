@@ -8,8 +8,6 @@ export const LangContext = createContext({
   english: (): void => {},
 });
 
-export const useLang = () => useContext(LangContext);
-
 const LangContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -36,5 +34,7 @@ const LangContextProvider: React.FC<{ children: React.ReactNode }> = ({
     <LangContext.Provider value={contextValue}>{children}</LangContext.Provider>
   );
 };
+
+export const useLang = () => useContext(LangContext);
 
 export default LangContextProvider;
