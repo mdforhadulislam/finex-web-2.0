@@ -35,6 +35,6 @@ const LangContextProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export const useLang = () => useContext(LangContext);
+export const useLang = () =>{ return useContext(LangContext)};
 
 export default LangContextProvider;
