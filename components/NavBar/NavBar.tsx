@@ -19,57 +19,49 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { navigationMenuTriggerStyle } from "../ui/navigation-menu";
 
-
 interface InternalLinkProps {
-    href?: string; // Optional href
-    className?: string; // Optional className
-    title?: string; // Optional title
+  href?: string; // Optional href
+  className?: string; // Optional className
+  title?: string; // Optional title
   onClick?: () => void;
-    children: React.ReactNode; // Children can be any React node
+  children: React.ReactNode; // Children can be any React node
 }
 
-const ListItem = React.forwardRef<
-<<<<<<< HEAD
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { href: string }
->(({ className, title, children, href, ...props }, ref) => {
-=======
-  HTMLAnchorElement, InternalLinkProps
->(({ className, title,href="/",onClick, children, ...props }, ref) => {
->>>>>>> 039e23715985d5dc7df770d0c13aacdf26254a8b
-  const { isBangla } = useLang();
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          href={href}
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          href={href}
-          {...props}
-        >
-          <div
-            className={`font-medium leading-none ${
-              isBangla ? "bfont text-[21px]" : "text-sm "
-            }`}
+const ListItem = React.forwardRef<HTMLAnchorElement, InternalLinkProps>(
+  ({ className, title, href = "/", children, ...props }, ref) => {
+    const { isBangla } = useLang();
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <Link
+            href={href}
+            ref={ref}
+            className={cn(
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            {...props}
           >
-            {title}
-          </div>
-          <p
-            className={`line-clamp-2  text-muted-foreground ${
-              isBangla ? "bfont text-[19px]" : "text-sm leading-snug"
-            }`}
-          >
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-});
+            <div
+              className={`font-medium leading-none ${
+                isBangla ? "bfont text-[21px]" : "text-sm "
+              }`}
+            >
+              {title}
+            </div>
+            <p
+              className={`line-clamp-2  text-muted-foreground ${
+                isBangla ? "bfont text-[19px]" : "text-sm leading-snug"
+              }`}
+            >
+              {children}
+            </p>
+          </Link>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 ListItem.displayName = "ListItem";
 
 export default function NavBar() {
@@ -119,12 +111,7 @@ export default function NavBar() {
           <NavigationMenu>
             <NavigationMenuList className="w-auto flex justify-center align-middle gap-2">
               <NavigationMenuItem>
-                <Link
-                  href="/"
-                  legacyBehavior
-                  passHref
-                  
-                >
+                <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Home</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>হোম</IsBangla>
@@ -132,11 +119,7 @@ export default function NavBar() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link
-                  href="/price"
-                  legacyBehavior
-                  passHref
-                >
+                <Link href="/price" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Price</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>চার্জ</IsBangla>
@@ -185,19 +168,13 @@ export default function NavBar() {
                     </li>
 
                     <IsEnglish className="">
-                      <ListItem
-                        href="/about/why-finex"
-                        title="Why Finex"
-                      >
+                      <ListItem href="/about/why-finex" title="Why Finex">
                         Re-usable components built using Radix UI and Tailwind
                         CSS.
                       </ListItem>
                     </IsEnglish>
                     <IsBangla className="">
-                      <ListItem
-                        href="/about/why-finex"
-                        title="কেন ফিনেক্স"
-                      >
+                      <ListItem href="/about/why-finex" title="কেন ফিনেক্স">
                         অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
                         স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
                         প্রদান করে
@@ -225,10 +202,7 @@ export default function NavBar() {
                     </IsBangla>
 
                     <IsEnglish className="">
-                      <ListItem
-                        href="/about/our-services"
-                        title="Our Services"
-                      >
+                      <ListItem href="/about/our-services" title="Our Services">
                         How to install dependencies and structure your app.
                       </ListItem>
                     </IsEnglish>
@@ -265,11 +239,7 @@ export default function NavBar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link
-                  href="/blog"
-                  legacyBehavior
-                  passHref
-                >
+                <Link href="/blog" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Blog</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>
@@ -279,11 +249,7 @@ export default function NavBar() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link
-                  href="/contact"
-                  legacyBehavior
-                  passHref
-                >
+                <Link href="/contact" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     <IsEnglish className="">Contact</IsEnglish>
                     <IsBangla className={"bfont text-[21px]"}>যোগাযোগ</IsBangla>
@@ -361,11 +327,7 @@ export default function NavBar() {
         <NavigationMenu className="bg-white p-2 rounded-md">
           <NavigationMenuList className="w-full flex flex-col justify-center align-middle gap-1 ">
             <NavigationMenuItem>
-              <Link
-                href="/"
-                legacyBehavior
-                passHref
-              >
+              <Link href="/" legacyBehavior passHref>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
@@ -376,11 +338,7 @@ export default function NavBar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link
-                href="/price"
-                legacyBehavior
-                passHref
-              >
+              <Link href="/price" legacyBehavior passHref>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
@@ -406,7 +364,6 @@ export default function NavBar() {
                 <ul className="grid gap-1 p-2  lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <NavigationMenuLink asChild>
                     <Link
-                      
                       className=" hidden sm:flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md "
                       href="/"
                     >
@@ -415,29 +372,20 @@ export default function NavBar() {
                   </NavigationMenuLink>
 
                   <IsEnglish className="">
-                    <ListItem
-                      href="/about/why-finex"
-                      title="Why Finex"
-                    >
+                    <ListItem href="/about/why-finex" title="Why Finex">
                       Re-usable components built using Radix UI and Tailwind
                       CSS.
                     </ListItem>
                   </IsEnglish>
                   <IsBangla className="">
-                    <ListItem
-                      href="/about/why-finex"
-                      title="কেন ফিনেক্স"
-                    >
+                    <ListItem href="/about/why-finex" title="কেন ফিনেক্স">
                       অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি স্বয়ংক্রিয়ভাবে
                       পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ প্রদান করে
                     </ListItem>
                   </IsBangla>
 
                   <IsEnglish className="">
-                    <ListItem
-                      href="/about/work-process"
-                      title="Work Processes"
-                    >
+                    <ListItem href="/about/work-process" title="Work Processes">
                       Styles for headings, paragraphs, lists...etc
                     </ListItem>
                   </IsEnglish>
@@ -453,10 +401,7 @@ export default function NavBar() {
                   </IsBangla>
 
                   <IsEnglish className="">
-                    <ListItem
-                      href="/about/our-services"
-                      title="Our Services"
-                    >
+                    <ListItem href="/about/our-services" title="Our Services">
                       How to install dependencies and structure your app.
                     </ListItem>
                   </IsEnglish>
@@ -491,11 +436,7 @@ export default function NavBar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link
-                href="/blog"
-                legacyBehavior
-                passHref
-              >
+              <Link href="/blog" legacyBehavior passHref>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
@@ -508,11 +449,7 @@ export default function NavBar() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link
-                href="/contact"
-                legacyBehavior
-                passHref
-              >
+              <Link href="/contact" legacyBehavior passHref>
                 <NavigationMenuLink
                   style={{ width: "100%", textAlign: "left", display: "block" }}
                   className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover:bg-defult-button text-defult-button hover:text-white bg-transparent`}
