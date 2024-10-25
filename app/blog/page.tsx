@@ -1,9 +1,13 @@
-import React from 'react'
+import OurBlogBodySection from '@/components/Blog/OurBlogBodySection';
+import OurBlogHeaderSection from '@/components/Blog/OurBlogHeaderSection'
 
 const Blog = () => {
   return (
-    <div>Blog</div>
-  )
-}
+    <>
+      <OurBlogHeaderSection />
+      <OurBlogBodySection />
+    </>
+  );
+};
 
-export default Blog
+export default Blog;

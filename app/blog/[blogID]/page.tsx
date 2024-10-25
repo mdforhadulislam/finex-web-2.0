@@ -1,8 +1,15 @@
+import OurBlogHeaderSection from '@/components/Blog/OurBlogHeaderSection'
 import React from 'react'
 
 const SingleBlog = () => {
   return (
-    <div>SingleBlog</div>
+    <>
+    <OurBlogHeaderSection />
+    
+    
+    
+    
+    </>
   )
 }
 
