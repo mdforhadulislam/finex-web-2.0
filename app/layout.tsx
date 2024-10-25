@@ -19,17 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <ContextMenu>
-          <ContextMenuTrigger> */}
-            <LangContextProvider>
-              <LoadContextProvider>
-                <Navbar />
-                {children}
-                <FooterBar />
-              </LoadContextProvider>
-            </LangContextProvider>
-          {/* </ContextMenuTrigger> */}
-        {/* </ContextMenu> */}
+        <LangContextProvider>
+          <LoadContextProvider>
+            <Navbar />
+            {children}
+            <FooterBar />
+          </LoadContextProvider>
+        </LangContextProvider>
       </body>
     </html>
   );
