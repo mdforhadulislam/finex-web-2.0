@@ -4,6 +4,7 @@ import LangContextProvider from "@/context/LangContext";
 import LoadContextProvider from "@/context/LoadContext";
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Finex - Home",
@@ -23,6 +24,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <FooterBar />
+            <Toaster position="top-right" className="mt-14" closeButton={true}  />
           </LoadContextProvider>
         </LangContextProvider>
       </body>
