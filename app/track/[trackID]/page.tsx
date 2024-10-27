@@ -9,10 +9,10 @@ const ShipmentTrack = () => {
   const trackID = Array.isArray(searchParams.trackID) ? searchParams.trackID[0] : searchParams.trackID;
 
   return (
-    <>
+    <div className="px-2">
       <ShipmentTrackingBox />
       <ShipmentTrackingDetails trackID={trackID} />
-    </>
+    </div>
   );
 };
 export default ShipmentTrack;
