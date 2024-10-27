@@ -2,15 +2,25 @@ import React from "react";
 
 interface Item {
   checkpoint_delivery_status?: string;
-  checkpoint_date?: Date;
+  checkpoint_date?: string|Date;
 }
 
-const isValidDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return !isNaN(date.getTime()); // Check if date is valid
-};
-
 const ShipmentTrackParcelLocationBox: React.FC<{ item: Item | null }> = ({ item }) => {
+
+  const formatDate = (date: string | Date) => {
+    if (typeof date === "string") {
+      const parsedDate = new Date(date);
+      if (!isNaN(parsedDate.getTime())) {
+        return parsedDate.toLocaleDateString();
+      }
+      return ""; // Return an empty string if the date string is invalid
+    } else if (date instanceof Date) {
+      return date.toLocaleDateString();
+    }
+    return ""; // Default return if date is neither string nor Date
+  };
+
+
   return (
     <div className="w-full h-auto grid grid-cols-12">
       {item ? (
@@ -37,9 +47,7 @@ const ShipmentTrackParcelLocationBox: React.FC<{ item: Item | null }> = ({ item 
             </h3>
             <p className="leading-tight text-justify w-full">MM-DD-YY</p>
             <p className="leading-tight text-justify w-full">
-            {item?.checkpoint_date && isValidDate(item?.checkpoint_date)
-    ? new Date(item?.checkpoint_date).toLocaleDateString()
-    : ''}
+            {item.checkpoint_date ? formatDate(item.checkpoint_date) : ""}
             </p>
           </div>
         </>
