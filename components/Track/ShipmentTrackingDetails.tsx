@@ -1,4 +1,5 @@
 "use client";
+
 import {
   getRequestSend,
   PUBLIC_TRACKING_API,
@@ -9,11 +10,65 @@ import { toast } from "sonner";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import ShipmentTrackParcelLocationBox from "./ShipmentTrackParcelLocationBox";
 
+// Define the necessary types
+interface Parcel {
+  from: { country: string };
+  to: { country: string };
+  sender: {
+    name: string;
+    phone: string;
+    email: string;
+    address: string;
+  };
+  reciver: {
+    name: string;
+    phone: string;
+    email: string;
+    address: {
+      address: string;
+    };
+  };
+  weight: string;
+  item: { list: string[] };
+}
+
+interface OrderInfo {
+  parcel: Parcel;
+}
+
+interface TrackingInfo {
+  checkpoint_delivery_status: string;
+  checkpoint_date: Date; // or string if you're getting dates in string format
+  tracking_detail: string; // Description of the tracking event
+  location: string; // Location of the event
+}
+
+interface CourierTracking {
+  origin_info: {
+    trackinfo: TrackingInfo[]; // List of tracking information
+  };
+  destination_city: string; // Destination city for the tracking
+  origin_city: string; // Origin city for the tracking
+  // Add more fields as needed
+}
+
+interface TrackInfo {
+  tracking_number?: string;
+  own_tracking_info: {
+    tracking_info: TrackingInfo[]; // Use the new TrackingInfo type here
+    courier_tracking: CourierTracking[]; // Use the new CourierTracking type here
+  };
+}
+
+interface TrackData {
+  order_info?: OrderInfo;
+  track_info?: TrackInfo;
+}
+
 export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
   trackID,
 }) => {
-  const [trackData, setTrackData] = useState(null);
-
+  const [trackData, setTrackData] = useState<TrackData | null>(null);
 
   useEffect(() => {
     getRequestSend(PUBLIC_TRACKING_API(trackID)).then((res) => {
@@ -24,14 +79,11 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
         toast.error(res.message);
       }
     });
-  }, []);
-
-  console.log(trackData);
-  
+  }, [trackID]);
 
   return (
     <div className="container m-auto px-2">
-      <div className="w-full h-auto p-2 mt-3">
+      <div className="w-full h-auto p-2 pb-14">
         <div className="w-full h-auto grid grid-cols-1 grid-rows-3 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-3 md:grid-rows-1 relative">
           <div className="sm:col-span-2 sm:row-span-2 md:col-span-1 md:row-span-1">
             <div className="text-lg font-semibold">
@@ -172,7 +224,7 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
                   <h1 className="sm:w-[250px]">
                     {new Date(
                       item?.checkpoint_date?.toLocaleString()
-                    ).toLocaleDateString()}{" "}
+                    )?.toLocaleDateString()}{" "}
                     {" - "}
                   </h1>
                   <p className="sm:w-[320px] text-sm font-normal text-left">

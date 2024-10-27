@@ -7,7 +7,7 @@ import { Button } from '../ui/button'
 
 const ShipmentTrackingBox = () => {
   return (
-    <div className=' container m-auto pt-20 pb-10'>
+    <div className=' container m-auto pt-24 pb-10'>
         <div className="w-full sm:w-auto p-5 shadow-3xl bg-white rounded-lg border-defult">
         <div className="w-full h-auto">
           
