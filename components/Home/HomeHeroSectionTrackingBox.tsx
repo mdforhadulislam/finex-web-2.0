@@ -14,7 +14,7 @@ const HomeHeroSectionTrackingBox = () => {
 
   const [trackingNumber, setTrackingNumber] = useState("");
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault()
     router.push(`/track/${trackingNumber}`);
   };
