@@ -7,7 +7,7 @@ import { useParams,  } from "next/navigation";
 
 const ShipmentTrack = () => {
   const searchParams = useParams();
-  const trackID:any = searchParams.trackID; // e.g., "12345" from /shipment?trackID=12345
+  const trackID = searchParams.trackID; 
 
   return <>
   <ShipmentTrackingBox />
