@@ -74,7 +74,9 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
     getRequestSend(PUBLIC_TRACKING_API(trackID)).then((res) => {
       if (res.status === 200) {
         toast.success(res.message);
-        setTrackData(res.data?.order_info ? res.data : { track_info: res.data });
+        setTrackData(
+          res.data?.order_info ? res.data : { track_info: res.data }
+        );
       } else {
         toast.error(res.message);
       }
@@ -94,14 +96,15 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
               <h1 className="">
                 {trackData?.order_info
                   ? trackData?.order_info?.parcel?.from?.country.toUpperCase()
-                  : trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_city}
+                  : trackData?.track_info?.own_tracking_info
+                      ?.courier_tracking[0]?.origin_city}
               </h1>
               TO{" "}
               <h1>
                 {trackData?.order_info
                   ? trackData?.order_info?.parcel?.to?.country.toUpperCase()
-                  : trackData?.track_info?.own_tracking_info?.courier_tracking[0]
-                      ?.destination_city}
+                  : trackData?.track_info?.own_tracking_info
+                      ?.courier_tracking[0]?.destination_city}
               </h1>
             </div>
             <div className="w-full h-auto py-3">
@@ -180,21 +183,25 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
             <div className="w-full h-auto">
               <div className="flex flex-col  text-gray-50">
                 {["pickup_bd", "inforeceived", "transit", "delivered"].map(
-                  (status) => (
-                    <ShipmentTrackParcelLocationBox
-                      key={status}
-                      item={[
-                        ...(trackData?.track_info?.own_tracking_info
-                          ?.tracking_info || []),
-                        ...(trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_info?.trackinfo?.toReversed() || []),
-                      ]
-                        ?.reverse()
-                        .find(
-                          (oItem) =>
-                            oItem?.checkpoint_delivery_status === status
-                        )}
-                    />
-                  )
+                  (status) => {
+                    const item = [
+                      ...(trackData?.track_info?.own_tracking_info
+                        ?.tracking_info || []),
+                      ...(trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_info?.trackinfo?.toReversed() ||
+                        []),
+                    ]
+                      .reverse()
+                      .find(
+                        (oItem) => oItem?.checkpoint_delivery_status === status
+                      );
+
+                    return (
+                      <ShipmentTrackParcelLocationBox
+                        key={status}
+                        item={item || null} // Pass item or null if not found
+                      />
+                    );
+                  }
                 )}
               </div>
             </div>
@@ -215,7 +222,8 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
               {[
                 ...(trackData?.track_info?.own_tracking_info?.tracking_info ||
                   []),
-                ...( trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_info?.trackinfo?.toReversed() || []),
+                ...(trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_info?.trackinfo?.toReversed() ||
+                  []),
               ]?.map((item, i) => (
                 <div
                   key={i}
