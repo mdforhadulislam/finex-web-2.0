@@ -99,9 +99,6 @@ export default function NavBar() {
   const auth = useAuth();
   const load = useLoad();
 
-
-  
-
   const handleScroll = () => {
     const offset = window.scrollY;
 
@@ -121,10 +118,6 @@ export default function NavBar() {
   const [role, setRole] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
-
-
-
 
   // Email validation
   const validateEmail = (email: string): boolean => {
@@ -181,7 +174,7 @@ export default function NavBar() {
       newErrors.password = "Password must be at least 6 characters long.";
 
     setErrors(newErrors);
-   
+
     if (Object.keys(newErrors).length === 0) {
       load.loadingStart();
       postRequestSend(
@@ -230,23 +223,21 @@ export default function NavBar() {
       }
     });
 
-    
-  if (
-    userTrack.email &&
-    userTrack.name &&
-    userTrack.phone &&
-    userTrack.type
-  ) {
-    
-    setEmail(userTrack.email);
-    setName(userTrack.name);
-    setPhone(userTrack.phone);
-    setRole(userTrack.type);
-  }
+    if (
+      userTrack.email &&
+      userTrack.name &&
+      userTrack.phone &&
+      userTrack.type
+    ) {
+      setEmail(userTrack.email);
+      setName(userTrack.name);
+      setPhone(userTrack.phone);
+      setRole(userTrack.type);
+    }
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [userTrack,auth?.user?.phone,auth?.token]);
+  }, [userTrack, auth?.user?.phone, auth?.token]);
 
   return (
     <header
@@ -447,7 +438,7 @@ export default function NavBar() {
               {!auth.isUserLoggedIn && (
                 <AlertDialogTrigger asChild>
                   <Button
-                    className={`px-3 text-center shadow text-white transition duration-300 w-full h-full hover:bg-white bg-defult-button border-defult-button border hover:text-defult-button rounded-lg flex justify-center align-middle items-center lg:px-5 lg:h-full lg:text-center lg:shadow lg:text-white lg:transition lg:w-full lg:hover:bg-white lg:flex lg:justify-center lg:align-middle lg:items-center lg:bg-defult-button lg:border-defult-button lg:border lg:hover:text-defult-button ${
+                    className={`px-3 text-center shadow text-white transition duration-300 w-full h-full hover:bg-white bg-defult-button border-defult-button border hover:text-defult-button rounded-lg flex justify-center align-middle items-center lg:px-5 lg:border-defult-button ${
                       navBarScrolled ? "lg:rounded-lg " : "lg:rounded-full "
                     } ${
                       lang.isBangla
