@@ -257,6 +257,7 @@ const OurServicesBodySection = () => {
             legal requirements and avoid delays.
           </p>{" "}
           <br />
+          <br />
           <p>
             For importers, we manage the entire customs clearance process,
             starting with a thorough review of your shipment and its
@@ -270,6 +271,7 @@ const OurServicesBodySection = () => {
             rejections, adding time and cost to your supply chain.
           </p>{" "}
           <br />
+          <br />
           <p>
             Additionally, we handle the payment of import duties and taxes,
             ensuring they are processed promptly. Our team coordinates with
@@ -279,6 +281,7 @@ const OurServicesBodySection = () => {
             could lead to spoilage or missed deadlines, both of which can have a
             significant financial impact.
           </p>{" "}
+          <br />
           <br />
           <p>
             For exporters, our services include the preparation and submission
@@ -291,6 +294,7 @@ const OurServicesBodySection = () => {
             regulations.
           </p>{" "}
           <br />
+          <br />
           <p>
             In addition to managing the documentation process, we handle the
             submission of customs declarations for export shipments and
@@ -302,6 +306,7 @@ const OurServicesBodySection = () => {
             seamless transition to the next stage of the journey.
           </p>{" "}
           <br />
+          <br />
           <p>
             One of the key advantages of partnering with Finex for customs
             clearance is our ability to offer customized solutions that cater to
@@ -311,6 +316,7 @@ const OurServicesBodySection = () => {
             flexible solutions that combine different modes of transport, such
             as air and sea freight, to optimize both cost and delivery times.
           </p>{" "}
+          <br />
           <br />
           <p>
             For example, if you are importing oversized cargo that cannot be
@@ -322,6 +328,7 @@ const OurServicesBodySection = () => {
             timely delivery.
           </p>{" "}
           <br />
+          <br />
           <p>
             In addition to standard customs clearance services, we provide
             specialized offerings such as passive temperature control shipments
@@ -331,6 +338,7 @@ const OurServicesBodySection = () => {
             their required conditions throughout the shipping process, whether
             by air or sea.
           </p>{" "}
+          <br />
           <br />
           <p>
             Our customs brokerage services provide additional value by acting as
@@ -342,6 +350,7 @@ const OurServicesBodySection = () => {
             all applicable regulations and that the customs clearance process is
             being managed in the most effective manner possible.
           </p>{" "}
+          <br />
           <br />
           <p>
             We also offer customs compliance audits, which are essential for
@@ -355,6 +364,7 @@ const OurServicesBodySection = () => {
             the risks of non-compliance may be higher.
           </p>{" "}
           <br />
+          <br />
           <p>
             To help you navigate the complexities of international trade, we
             offer tariff and duty advisory services, providing you with the most
@@ -365,6 +375,7 @@ const OurServicesBodySection = () => {
             that keep your products competitively priced in international
             markets and avoid unexpected costs that could eat into your margins.
           </p>{" "}
+          <br />
           <br />
           <p>
             At Finex, we are committed to providing fast, reliable, and
@@ -377,6 +388,7 @@ const OurServicesBodySection = () => {
             temperature-controlled shipments and compliance audits, we provide
             end-to-end support for all your customs clearance needs.
           </p>{" "}
+          <br />
           <br />
           <p>
             With Finex by your side, you can focus on growing your business and
@@ -402,6 +414,8 @@ const OurServicesBodySection = () => {
             করে যে আপনার পণ্য সমস্ত আইনি প্রয়োজনীয়তা মেনে সময়মতো পৌঁছায় এবং
             কোনো ধরনের বিলম্ব ছাড়াই।
           </p>
+          <br />
+          <br />
           <p className="bfont">
             আমদানিকারকদের জন্য, আমরা কাস্টমস ক্লিয়ারেন্স প্রক্রিয়ার সম্পূর্ণ
             দায়িত্ব নিই, যার মধ্যে শিপমেন্টের সমস্ত ডকুমেন্ট পর্যালোচনা এবং
@@ -413,6 +427,8 @@ const OurServicesBodySection = () => {
             উচ্চ শুল্ক বা শিপমেন্ট প্রত্যাখ্যাত হতে পারে, যা আপনার সাপ্লাই
             চেইনের জন্য অতিরিক্ত সময় এবং ব্যয় বৃদ্ধি করে।
           </p>
+          <br />
+          <br />
           <p className="bfont">
             আমরা আমদানি শুল্ক ও করের পেমেন্ট পরিচালনা করি এবং নিশ্চিত করি যে
             এগুলি সঠিক সময়ে প্রক্রিয়াজাত করা হয়েছে, যাতে কাস্টমসের কাছে আপনার
@@ -420,6 +436,8 @@ const OurServicesBodySection = () => {
             পণ্যের জন্য, বিলম্বের কারণে পণ্যের ক্ষতি বা প্রয়োজনীয় সময়সীমা মিস
             হলে আপনার ব্যবসার জন্য উল্লেখযোগ্য আর্থিক প্রভাব ফেলতে পারে।
           </p>
+          <br />
+          <br />
 
           <p className="bfont">
             রপ্তানিকারকদের জন্য, আমরা বাণিজ্য ডকুমেন্টেশন প্রস্তুতি ও জমা
@@ -431,6 +449,8 @@ const OurServicesBodySection = () => {
             প্রয়োজনীয় সমস্ত আইন ও নিয়ম-কানুন মেনে চলা নিশ্চিত করে।
           </p>
 
+          <br />
+          <br />
           <p className="bfont">
             ডকুমেন্টেশন পরিচালনার পাশাপাশি, আমরা রপ্তানি শিপমেন্টের জন্য কাস্টমস
             ঘোষণাগুলি জমা দেওয়ার কাজ করি এবং কাস্টমস কর্তৃপক্ষের সাথে সমন্বয়
@@ -439,6 +459,8 @@ const OurServicesBodySection = () => {
             সামগ্রী, আমরা প্রয়োজনীয় অনুমোদন পেতে সাহায্য করি, যাতে নিয়মের
             মধ্যে থেকে আপনার পণ্য পাঠানো সম্ভব হয়।
           </p>
+          <br />
+          <br />
 
           <p className="bfont">
             Finex-এর কাস্টমস ক্লিয়ারেন্স পরিষেবার অন্যতম বড় সুবিধা হলো আমরা
@@ -449,6 +471,8 @@ const OurServicesBodySection = () => {
             সমাধান প্রদান করি, যেমন বায়ু ও সমুদ্র পরিবহন একত্রে ব্যবহার করে
             সময় এবং খরচ উভয়ই সাশ্রয় করা।
           </p>
+          <br />
+          <br />
 
           <p className="bfont">
             যদি আপনি এমন কোনো পণ্য আমদানি করেন যা শুধুমাত্র বায়ুতে পাঠানো সম্ভব
@@ -458,6 +482,8 @@ const OurServicesBodySection = () => {
             এবং পরবর্তী ধাপে বায়ু পরিবহন করতে পারি, যা সময় এবং খরচের মধ্যে
             সামঞ্জস্য রেখে দ্রুত সরবরাহ নিশ্চিত করে।
           </p>
+          <br />
+          <br />
 
           <p className="bfont">
             আমরা প্রচলিত কাস্টমস ক্লিয়ারেন্স পরিষেবার পাশাপাশি বিশেষায়িত পরিষেবা
@@ -466,6 +492,8 @@ const OurServicesBodySection = () => {
             অত্যন্ত গুরুত্বপূর্ণ। এই পরিষেবায় পণ্যটির সম্পূর্ণ ট্রানজিটের সময়
             তাপমাত্রা নিয়ন্ত্রণ করা হয়, যাতে পণ্য নিরাপদে গন্তব্যে পৌঁছায়।
           </p>
+          <br />
+          <br />
 
           <p className="bfont">
             আমাদের কাস্টমস ব্রোকারেজ পরিষেবাও অত্যন্ত কার্যকর। একজন কাস্টমস
@@ -476,6 +504,8 @@ const OurServicesBodySection = () => {
             মেনে চলবে এবং কাস্টমস ক্লিয়ারেন্স প্রক্রিয়া সবচেয়ে কার্যকরী উপায়ে
             পরিচালিত হবে।
           </p>
+          <br />
+          <br />
 
           <p className="bfont">
             আমরা কাস্টমস কমপ্লায়েন্স অডিট পরিষেবাও প্রদান করি, যা নিয়মিত
@@ -493,6 +523,8 @@ const OurServicesBodySection = () => {
             আপডেট থেকে আমরা আপনাকে সাহায্য করি যাতে আপনি সঠিক সিদ্ধান্ত নিতে
             পারেন এবং আপনার পণ্যের প্রতিযোগিতামূলক মূল্য বজায় রাখতে পারেন।
           </p>
+          <br />
+          <br />
 
           <p className="bfont">
             Finex-এ আমরা প্রতিশ্রুতিবদ্ধ যে আপনার ব্যবসার চাহিদা অনুযায়ী

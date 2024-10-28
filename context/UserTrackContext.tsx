@@ -61,7 +61,7 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const getUserTrackData = window?.localStorage?.getItem("finex-user-track");
     if (getUserTrackData) {
-      const parsedData: UserTrackDataType = JSON.parse(getUserTrackData);
+      const parsedData: UserTrackDataType = JSON?.parse(getUserTrackData);
       setUserTrackData(parsedData);
       setOpen(false);
     } else {
@@ -109,9 +109,9 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
       postRequestSend(VISITOR_POST_API, {}, userTrackData).then((res) => {
         if (res.status == 200) {
           toast.success(res.message);
-          localStorage.setItem(
+          window?.localStorage?.setItem(
             "finex-user-track",
-            JSON.stringify(userTrackData)
+            JSON?.stringify(userTrackData)
           );
           setOpen(false);
         } else {
