@@ -68,6 +68,9 @@ export default function NavBar() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [navBarScrolled, setNavBarScrolled] = useState(false);
   const lang = useLang();
+  // const userTrack = useUserTrack()
+
+  // console.log(userTrack);
 
   const handleScroll = () => {
     const offset = window.scrollY;

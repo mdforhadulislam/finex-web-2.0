@@ -80,8 +80,6 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
       }
     });
   }, [trackID]);
-
-  console.log(trackData);
   
 
   if(!trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_info?.trackinfo?.length){

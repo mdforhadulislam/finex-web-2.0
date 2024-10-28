@@ -5,6 +5,7 @@ import LoadContextProvider from "@/context/LoadContext";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import UserTrackContext from "@/context/UserTrackContext";
 
 export const metadata: Metadata = {
   title: "Finex - Home",
@@ -21,10 +22,12 @@ export default function RootLayout({
       <body>
         <LangContextProvider>
           <LoadContextProvider>
+            <UserTrackContext>
             <Navbar />
             {children}
             <FooterBar />
             <Toaster position="top-right" className="mt-14" closeButton={true}  />
+            </UserTrackContext>
           </LoadContextProvider>
         </LangContextProvider>
       </body>

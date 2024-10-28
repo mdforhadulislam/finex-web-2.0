@@ -3,6 +3,7 @@ export const ROOT_API = `https://finex-server.onrender.com/`;
 export const ROOT_API_V1 = `${ROOT_API}api/v1/`;
 
 export const PUBLIC_TRACKING_API = (id) => `${ROOT_API_V1}track/${id}`;
+export const VISITOR_POST_API = `${ROOT_API_V1}utils/visitor/`
 
 
 export const getRequestSend = async (url, header) => {
