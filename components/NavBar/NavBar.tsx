@@ -99,6 +99,9 @@ export default function NavBar() {
   const auth = useAuth();
   const load = useLoad();
 
+
+  
+
   const handleScroll = () => {
     const offset = window.scrollY;
 
@@ -118,6 +121,10 @@ export default function NavBar() {
   const [role, setRole] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+
+
+
 
   // Email validation
   const validateEmail = (email: string): boolean => {
@@ -174,19 +181,7 @@ export default function NavBar() {
       newErrors.password = "Password must be at least 6 characters long.";
 
     setErrors(newErrors);
-
-    if (
-      userTrack.email &&
-      userTrack.name &&
-      userTrack.phone &&
-      userTrack.type
-    ) {
-      setEmail(userTrack.email);
-      setName(userTrack.name);
-      setPhone(userTrack.phone);
-      setRole(userTrack.type);
-    }
-
+   
     if (Object.keys(newErrors).length === 0) {
       load.loadingStart();
       postRequestSend(
@@ -235,9 +230,23 @@ export default function NavBar() {
       }
     });
 
+    
+  if (
+    userTrack.email &&
+    userTrack.name &&
+    userTrack.phone &&
+    userTrack.type
+  ) {
+    
+    setEmail(userTrack.email);
+    setName(userTrack.name);
+    setPhone(userTrack.phone);
+    setRole(userTrack.type);
+  }
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [profile]);
+  }, [userTrack,auth?.user?.phone,auth?.token]);
 
   return (
     <header
