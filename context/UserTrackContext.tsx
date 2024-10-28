@@ -1,5 +1,8 @@
 "use client";
-import { postRequestSend, VISITOR_POST_API } from "@/components/ApiCall/ApiMethod";
+import {
+  postRequestSend,
+  VISITOR_POST_API,
+} from "@/components/ApiCall/ApiMethod";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -80,7 +83,7 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const isValidForm = () => {
-    const { name, email, phone,service } = userTrackData;
+    const { name, email, phone, service } = userTrackData;
     if (!name || !email || !phone || !service) {
       setError("Please fill in all required fields and including Service.");
       return false;
@@ -103,16 +106,18 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const handleSubmit = () => {
     if (isValidForm()) {
-        postRequestSend(VISITOR_POST_API).then(res=>{
-            if(res.status==200){
-                toast.success(res.message)
-                localStorage.setItem("finex-user-track", JSON.stringify(userTrackData));
-            }else{
-                toast.success(res.message)
-            }
-        })
-
-      setOpen(false);
+      postRequestSend(VISITOR_POST_API, {}, userTrackData).then((res) => {
+        if (res.status == 200) {
+          toast.success(res.message);
+          localStorage.setItem(
+            "finex-user-track",
+            JSON.stringify(userTrackData)
+          );
+          setOpen(false);
+        } else {
+          toast.success(res.message);
+        }
+      });
     }
   };
 
@@ -163,7 +168,9 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
                   <SelectValue placeholder="Service" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="export">Export (From Bangladesh)</SelectItem>
+                  <SelectItem value="export">
+                    Export (From Bangladesh)
+                  </SelectItem>
                   <SelectItem value="import">Import</SelectItem>
                 </SelectContent>
               </Select>

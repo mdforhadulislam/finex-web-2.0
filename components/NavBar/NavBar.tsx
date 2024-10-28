@@ -1,6 +1,9 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LangContext";
+import { useLoad } from "@/context/LoadContext";
+import { useUserTrack } from "@/context/UserTrackContext";
 import { cn } from "@/lib/utils";
 import IsBangla from "@/utils/IsBangla";
 import IsEnglish from "@/utils/IsEnglish";
@@ -14,9 +17,31 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@radix-ui/react-navigation-menu";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
+import {
+  getRequestSend,
+  LOGIN_API,
+  LOGOUT_API,
+  postRequestSend,
+  REGISTER_API,
+  USER_ACCOUNT_API,
+} from "../ApiCall/ApiMethod";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "../ui/alert-dialog";
 import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import { navigationMenuTriggerStyle } from "../ui/navigation-menu";
 
 interface InternalLinkProps {
@@ -65,12 +90,14 @@ const ListItem = React.forwardRef<HTMLAnchorElement, InternalLinkProps>(
 ListItem.displayName = "ListItem";
 
 export default function NavBar() {
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [navBarScrolled, setNavBarScrolled] = useState(false);
-  const lang = useLang();
-  // const userTrack = useUserTrack()
+  const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
+  const [navBarScrolled, setNavBarScrolled] = useState<boolean>(false);
+  const [isProfileMenu, setIsProfileMenu] = useState<boolean>(false);
 
-  // console.log(userTrack);
+  const lang = useLang();
+  const userTrack = useUserTrack();
+  const auth = useAuth();
+  const load = useLoad();
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -81,10 +108,136 @@ export default function NavBar() {
       setNavBarScrolled(false);
     }
   };
+
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [isRegister, setIsRegister] = useState<boolean>(false);
+
+  const [name, setName] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [role, setRole] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  // Email validation
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Password validation
+  const validatePassword = (password: string): boolean => password.length >= 6;
+
+  // Phone validation
+  const validatePhone = (phone: string): boolean => {
+    const phoneRegex = /^\+?\d{11,15}$/; // Adjust as needed for country-specific formats
+    return phoneRegex.test(phone);
+  };
+
+  const handleLogin = (): void => {
+    const newErrors: { [key: string]: string } = {};
+    if (!validatePhone(phone))
+      newErrors.phone =
+        "Please enter a valid phone number (11-15 digits, including country code).";
+    if (!validatePassword(password))
+      newErrors.password = "Password must be at least 6 characters long.";
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      load.loadingStart();
+      postRequestSend(LOGIN_API, {}, { phone, password }).then((res) => {
+        if (res.status == 200) {
+          load.loadingEnd();
+          auth.loginHandler(res?.data?.token, res?.data?.user);
+          toast.success(res.message);
+          setIsRegister(false);
+          setIsLogin(false);
+        } else {
+          toast.error(res.message);
+          setIsLogin(true);
+        }
+      });
+    } else {
+      Object.values(errors).forEach((error) => toast.error(error));
+    }
+  };
+
+  const handleRegister = (): void => {
+    const newErrors: { [key: string]: string } = {};
+    if (!name) newErrors.name = "Name is required.";
+    if (!validatePhone(phone))
+      newErrors.phone =
+        "Please enter a valid phone number (11-15 digits, including country code).";
+    if (!validateEmail(email)) newErrors.email = "Please enter a valid email.";
+    if (!validatePassword(password))
+      newErrors.password = "Password must be at least 6 characters long.";
+
+    setErrors(newErrors);
+
+    if (
+      userTrack.email &&
+      userTrack.name &&
+      userTrack.phone &&
+      userTrack.type
+    ) {
+      setEmail(userTrack.email);
+      setName(userTrack.name);
+      setPhone(userTrack.phone);
+      setRole(userTrack.type);
+    }
+
+    if (Object.keys(newErrors).length === 0) {
+      load.loadingStart();
+      postRequestSend(
+        REGISTER_API,
+        {},
+        { name, phone, email, password, role }
+      ).then((res) => {
+        load.loadingEnd();
+        if (res.status == 200) {
+          toast.success(res.message);
+          setIsRegister(false);
+          setIsLogin(true);
+        } else {
+          toast.error(res.message);
+          setIsLogin(true);
+        }
+      });
+    } else {
+      Object.values(errors).forEach((error) => toast.error(error));
+    }
+  };
+
+  const logoutHandler = () => {
+    load.loadingStart();
+    postRequestSend(LOGOUT_API, { authorization: auth.token }).then((res) => {
+      load.loadingEnd();
+      if (res.status === 200) {
+        auth.logoutHandler();
+        toast.success(res.message);
+        setIsProfileMenu(false);
+      } else {
+        setIsProfileMenu(false);
+        toast.error(res.message);
+      }
+    });
+  };
+
+  const [profile, setProfile] = useState<string>("");
+
   useEffect(() => {
+    getRequestSend(USER_ACCOUNT_API(auth?.user?.phone), {
+      authorization: auth.token,
+    }).then((res) => {
+      if (res.status == 200) {
+        setProfile(res?.data?.profile);
+      }
+    });
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [profile]);
 
   return (
     <header
@@ -109,7 +262,7 @@ export default function NavBar() {
         <div
           className={`${
             isMenuVisible ? "block" : "hidden"
-          } lg:flex items-center align-middle justify-center  hidden ml-[-40px]`}
+          } lg:flex items-center align-middle justify-center  hidden ml-[-20px]`}
         >
           <NavigationMenu>
             <NavigationMenuList className="w-auto flex justify-center align-middle gap-2">
@@ -263,8 +416,8 @@ export default function NavBar() {
           </NavigationMenu>
         </div>
 
-        <div>
-          <div className="flex gap-1 sm:gap-2">
+        <div className="flex gap-1">
+          <div className="flex gap-1 sm:gap-2 -mr-1">
             <Button
               className={
                 "  border border-defult-button text-center shadow  hover:bg-defult-button/25 bg-defult-button/15 text-defult-button transition duration-300 block rounded-md w-full py-2 h-auto px-2"
@@ -280,18 +433,225 @@ export default function NavBar() {
               {lang.isEnglish && "Be"} {lang.isBangla && "En"}
             </Button>
 
-            <div className="block lg:hidden">
-              <Link
-                href={"/auth/login"}
-                className={`px-3  text-center  shadow  text-white transition duration-300 w-full hover:bg-white bg-defult-button border-defult-button border hover:text-defult-button rounded-lg flex justify-center align-middle items-center ${
-                  lang.isBangla
-                    ? "bfont text-[22px] py-[3px]"
-                    : "py-[6px] text-[16.6px]"
-                }`}
-              >
-                {lang.isEnglish && "Login"} {lang.isBangla && "লগইন"}
-              </Link>
-            </div>
+            {/* login from  */}
+            <AlertDialog open={isLogin} onOpenChange={setIsLogin}>
+              {!auth.isUserLoggedIn && (
+                <AlertDialogTrigger asChild>
+                  <Button
+                    className={`px-3 text-center shadow text-white transition duration-300 w-full h-full hover:bg-white bg-defult-button border-defult-button border hover:text-defult-button rounded-lg flex justify-center align-middle items-center lg:px-5 lg:h-full lg:text-center lg:shadow lg:text-white lg:transition lg:w-full lg:hover:bg-white lg:flex lg:justify-center lg:align-middle lg:items-center lg:bg-defult-button lg:border-defult-button lg:border lg:hover:text-defult-button ${
+                      navBarScrolled ? "lg:rounded-lg " : "lg:rounded-full "
+                    } ${
+                      lang.isBangla
+                        ? "bfont text-[22px] lg:py-[2px] lg:pt-[5px] py-[3px]"
+                        : "py-[6px] text-[16.6px]"
+                    }`}
+                    onClick={() => {
+                      setIsLogin(!isLogin);
+                    }}
+                  >
+                    {lang.isEnglish && "Login"} {lang.isBangla && "লগইন"}
+                  </Button>
+                </AlertDialogTrigger>
+              )}
+
+              <AlertDialogContent className="bg-transparent bg-none border-none p-3">
+                <div className="bg-white p-6 border border-white rounded-lg">
+                  <AlertDialogHeader>
+                    <AlertDialogTitle className="text-xl text-defult">
+                      Login to Your Account
+                    </AlertDialogTitle>
+                    <AlertDialogDescription className="text-sm font-normal pb-5">
+                      Please enter your email and password to log in.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleLogin();
+                    }}
+                    className="grid gap-2"
+                  >
+                    <div className="space-y-1">
+                      <Label htmlFor="phone" className="text-defult">
+                        Phone
+                      </Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="Enter your phone number"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <Label htmlFor="password" className="text-defult">
+                        Password
+                      </Label>
+                      <Input
+                        id="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                    </div>
+
+                    <div className="flex justify-left items-center">
+                      <p className="text-sm text-gray-600">
+                        Don’t have an account?{" "}
+                        <button
+                          onClick={() => {
+                            setIsLogin(false);
+                            setIsRegister(true); // Assuming setIsRegister toggles a registration dialog
+                          }}
+                          className="text-defult font-semibold hover:underline"
+                        >
+                          Register
+                        </button>
+                      </p>
+                    </div>
+
+                    <AlertDialogFooter className="flex justify-between pt-4">
+                      <AlertDialogCancel asChild>
+                        <Button
+                          variant="outline"
+                          className="border-defult hover:bg-defult/10 text-defult hover:text-defult/90 px-5"
+                        >
+                          Cancel
+                        </Button>
+                      </AlertDialogCancel>
+                      <Button
+                        type="submit"
+                        className="border-defult hover:bg-defult/90 hover:text-white text-white bg-defult px-8"
+                      >
+                        Login
+                      </Button>
+                    </AlertDialogFooter>
+                  </form>
+                </div>
+              </AlertDialogContent>
+            </AlertDialog>
+
+            <AlertDialog open={isRegister} onOpenChange={setIsRegister}>
+              <AlertDialogContent className="bg-transparent bg-none border-none p-3">
+                <div className="bg-white p-6 border border-white rounded-lg">
+                  <AlertDialogHeader>
+                    <AlertDialogTitle className="text-xl text-defult">
+                      Create a New Account
+                    </AlertDialogTitle>
+                    <AlertDialogDescription className="text-sm font-normal pb-5">
+                      Please fill in the details below to register.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleRegister();
+                    }}
+                    className="grid gap-2"
+                  >
+                    <div className="space-y-1">
+                      <Label htmlFor="name" className="text-defult">
+                        Name
+                      </Label>
+                      <Input
+                        id="name"
+                        type="text"
+                        placeholder="Enter your full name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <Label htmlFor="phone" className="text-defult">
+                        Phone
+                      </Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="Enter your phone number"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <Label htmlFor="email" className="text-defult">
+                        Email
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <Label htmlFor="password" className="text-defult">
+                        Password
+                      </Label>
+                      <Input
+                        id="password"
+                        type="password"
+                        placeholder="Create a password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                    </div>
+
+                    <div className="flex justify-left items-center">
+                      <p className="text-sm text-gray-600">
+                        Already have an account?{" "}
+                        <button
+                          onClick={() => {
+                            setIsRegister(false);
+                            setIsLogin(true); // Switch back to login dialog
+                          }}
+                          className="text-defult font-semibold hover:underline"
+                        >
+                          Login
+                        </button>
+                      </p>
+                    </div>
+
+                    <AlertDialogFooter className="flex justify-between pt-4">
+                      <AlertDialogCancel asChild>
+                        <Button
+                          variant="outline"
+                          className="border-defult hover:bg-defult/10 text-defult hover:text-defult/90 px-5"
+                        >
+                          Cancel
+                        </Button>
+                      </AlertDialogCancel>
+                      <Button
+                        type="submit"
+                        className="border-defult hover:bg-defult/90 hover:text-white text-white bg-defult px-8"
+                      >
+                        Register
+                      </Button>
+                    </AlertDialogFooter>
+                  </form>
+                </div>
+              </AlertDialogContent>
+            </AlertDialog>
 
             <Button
               className={`inline-flex items-center p-1  bg-defult  rounded-lg lg:hidden text-white shadow-3xl hover:border hover:bg-transparent hover:text-defult  focus:outline-none h-auto border border-defult ${
@@ -304,22 +664,85 @@ export default function NavBar() {
               {lang.isEnglish && "Menu"}
               {lang.isBangla && "মেনু"}
             </Button>
-
-            <div className="hidden lg:block">
-              <Link
-                href={"/auth/login"}
-                className={`px-5 h-auto text-center shadow  text-white transition duration-300 w-full hover:bg-white flex justify-center align-middle items-center bg-defult-button border-defult-button border hover:text-defult-button ${
-                  navBarScrolled ? "rounded-lg " : "rounded-full "
-                } ${
-                  lang.isBangla
-                    ? "bfont text-[22px] py-[2px] pt-[5px]"
-                    : "py-[6px] text-[16.6px]"
-                }`}
-              >
-                {lang.isEnglish && "Login"} {lang.isBangla && "লগইন"}
-              </Link>
-            </div>
           </div>
+          {auth.isUserLoggedIn && (
+            <div
+              className=" bg-white p-1 pl-2 rounded-full cursor-pointer relative"
+              onClick={() => {
+                setIsProfileMenu(!isProfileMenu);
+              }}
+            >
+              <Image
+                width={33}
+                height={33}
+                src={profile ? profile : "/profile.png"}
+                className="w-[38px] h-[38px] p-[2px] rounded-full shadow-3xl overflow-hidden border-gray-800 border"
+                alt="User Profile"
+              />
+              {isProfileMenu && (
+                <>
+                  <div
+                    id="dropdownAvatar"
+                    className="z-0 absolute -right-0 sm:-right-[10px] top-[58px]  bg-white divide-y divide-gray-100 rounded-lg  shadow-4xl w-44 border "
+                  >
+                    <ul
+                      className=" text-sm text-gray-700 "
+                      aria-labelledby="dropdownUserAvatarButton"
+                    >
+                      <li>
+                        <IsEnglish className="">
+                          <Link
+                            href={"/user"}
+                            className="block px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer"
+                          >
+                            Dashboard
+                          </Link>
+                        </IsEnglish>
+                        <IsBangla className="">
+                          <Link
+                            href={"/user"}
+                            className="block px-4 py-1 hover:bg-gray-100 rounded-lg cursor-pointer bfont text-xl"
+                          >
+                            ড্যাশবোর্ড
+                          </Link>
+                        </IsBangla>
+                      </li>
+                      <li>
+                        <IsEnglish className="">
+                          <button className="block px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer w-full text-left">
+                            Settings
+                          </button>
+                        </IsEnglish>
+                        <IsBangla className="">
+                          <button className="block px-4 py-1 hover:bg-gray-100 rounded-lg cursor-pointer w-full bfont text-left text-xl">
+                            সেটিংস্‌
+                          </button>
+                        </IsBangla>
+                      </li>
+                      <li>
+                        <IsEnglish className="">
+                          <button
+                            className="w-full block px-4 py-2 text-left hover:bg-gray-100 rounded-lg cursor-pointer"
+                            onClick={logoutHandler}
+                          >
+                            Logout
+                          </button>
+                        </IsEnglish>
+                        <IsBangla className="">
+                          <button
+                            className=" w-full text-left block px-4 py-1 hover:bg-gray-100 rounded-lg cursor-pointer  bfont text-xl"
+                            onClick={logoutHandler}
+                          >
+                            লগআউট
+                          </button>
+                        </IsBangla>
+                      </li>
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
       <div
