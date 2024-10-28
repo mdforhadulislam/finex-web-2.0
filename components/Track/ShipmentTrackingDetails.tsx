@@ -81,7 +81,10 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
     });
   }, [trackID]);
 
-  if(!trackData?.track_info?.courier_tracking[0]?.origin_info?.trackinfo?.length){
+  console.log(trackData);
+  
+
+  if(!trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_info?.trackinfo?.length){
     return <div className="text-center text-gray-500 font-semibold mb-20 px-2">We {"couldn't"} retrieve tracking information. If you need assistance, please contact support.</div> 
   }
 
@@ -98,8 +101,7 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
               <h1 className="">
                 {trackData?.order_info
                   ? trackData?.order_info?.parcel?.from?.country.toUpperCase()
-                  : trackData?.track_info?.own_tracking_info
-                      ?.courier_tracking[0]?.origin_city}
+                  : trackData?.track_info?.own_tracking_info?.courier_tracking[0]?.origin_city}
               </h1>
               TO{" "}
               <h1>
