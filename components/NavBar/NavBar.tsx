@@ -147,15 +147,15 @@ export default function NavBar() {
     if (Object.keys(newErrors).length === 0) {
       load.loadingStart();
       postRequestSend(LOGIN_API, {}, { phone, password }).then((res) => {
+        load.loadingEnd();
         if (res.status == 200) {
-          load.loadingEnd();
-          auth.loginHandler(res?.data?.token, res?.data?.user);
-          toast.success(res.message);
           setIsRegister(false);
           setIsLogin(false);
+          auth.loginHandler(res?.data?.token, res?.data?.user);
+          toast.success(res.message);
         } else {
-          toast.error(res.message);
           setIsLogin(true);
+          toast.error(res.message);
         }
       });
     } else {
@@ -184,9 +184,9 @@ export default function NavBar() {
       ).then((res) => {
         load.loadingEnd();
         if (res.status == 200) {
-          toast.success(res.message);
           setIsRegister(false);
           setIsLogin(true);
+          toast.success(res.message);
         } else {
           toast.error(res.message);
           setIsLogin(true);
@@ -203,8 +203,8 @@ export default function NavBar() {
       load.loadingEnd();
       if (res.status === 200) {
         auth.logoutHandler();
-        toast.success(res.message);
         setIsProfileMenu(false);
+        toast.success(res.message);
       } else {
         setIsProfileMenu(false);
         toast.error(res.message);

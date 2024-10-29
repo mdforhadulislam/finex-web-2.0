@@ -5,6 +5,7 @@ import AuthContextProvider from "@/context/AuthContext";
 import LangContextProvider from "@/context/LangContext";
 import LoadContextProvider from "@/context/LoadContext";
 import UserTrackContext from "@/context/UserTrackContext";
+import Spriner from "@/utils/Spriner";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -26,6 +27,7 @@ export default function RootLayout({
             <AuthContextProvider>
               <UserTrackContext>
                 <Navbar />
+                <Spriner />
                 {children}
                 <FooterBar />
                 <Toaster
