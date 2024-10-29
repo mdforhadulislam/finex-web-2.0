@@ -109,10 +109,7 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
       postRequestSend(VISITOR_POST_API, {}, userTrackData).then((res) => {
         if (res.status == 200) {
           toast.success(res.message);
-          window?.localStorage?.setItem(
-            "finex-user-track",
-            JSON?.stringify(userTrackData)
-          );
+          window?.localStorage?.setItem("finex-user-track",JSON?.stringify(userTrackData));
           setOpen(false);
         } else {
           toast.success(res.message);
@@ -123,6 +120,7 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <UserTrackContext.Provider value={userTrackData}>
+      
       {children}
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogContent className="px-5 bg-transparent border-none">
