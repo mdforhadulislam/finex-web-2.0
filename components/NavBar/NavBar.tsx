@@ -215,6 +215,10 @@ export default function NavBar() {
   const [profile, setProfile] = useState<string>("");
 
   useEffect(() => {
+    if (auth.isUserLoggedIn) {
+      setIsLogin(false);
+    }
+
     getRequestSend(USER_ACCOUNT_API(auth?.user?.phone), {
       authorization: auth.token,
     }).then((res) => {
@@ -237,7 +241,7 @@ export default function NavBar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [userTrack, auth?.user?.phone, auth?.token]);
+  }, [userTrack, auth?.user?.phone, auth?.token, auth.isUserLoggedIn]);
 
   return (
     <header
