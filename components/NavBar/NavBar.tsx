@@ -157,7 +157,7 @@ export default function NavBar() {
           setIsLogin(false);
           auth.loginHandler(res?.data?.token, res?.data?.user);
           toast.success(res.message);
-          router.push(`http://localhost:3000/${res?.data?.token}?phone=${res?.data?.user?.phone}`)
+          router.push(`https://finex-app.vercel.app/${res?.data?.token}?phone=${res?.data?.user?.phone}`)
         } else {
           setIsLogin(true);
           toast.error(res.message);
@@ -702,7 +702,7 @@ export default function NavBar() {
                       <li>
                         <IsEnglish className="">
                           <Link
-                            href={"/user"}
+                            href={"https://finex-app.vercel.app/dashboard/"}
                             className="block px-4 py-2 hover:bg-gray-100 rounded-lg cursor-pointer"
                           >
                             Dashboard
@@ -710,7 +710,7 @@ export default function NavBar() {
                         </IsEnglish>
                         <IsBangla className="">
                           <Link
-                            href={"/user"}
+                            href={"https://finex-app.vercel.app/dashboard/"}
                             className="block px-4 py-1 hover:bg-gray-100 rounded-lg cursor-pointer bfont text-xl"
                           >
                             ড্যাশবোর্ড
