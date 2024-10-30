@@ -43,6 +43,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { navigationMenuTriggerStyle } from "../ui/navigation-menu";
+import { useRouter } from "next/navigation";
 
 interface InternalLinkProps {
   href?: string; // Optional href
@@ -94,6 +95,8 @@ export default function NavBar() {
   const [navBarScrolled, setNavBarScrolled] = useState<boolean>(false);
   const [isProfileMenu, setIsProfileMenu] = useState<boolean>(false);
 
+  const router = useRouter()
+
   const lang = useLang();
   const userTrack = useUserTrack();
   const auth = useAuth();
@@ -134,6 +137,7 @@ export default function NavBar() {
     return phoneRegex.test(phone);
   };
 
+
   const handleLogin = (): void => {
     const newErrors: { [key: string]: string } = {};
     if (!validatePhone(phone))
@@ -153,6 +157,7 @@ export default function NavBar() {
           setIsLogin(false);
           auth.loginHandler(res?.data?.token, res?.data?.user);
           toast.success(res.message);
+          router.push(`http://localhost:3000/${res?.data?.token}?phone=${res?.data?.user?.phone}`)
         } else {
           setIsLogin(true);
           toast.error(res.message);
@@ -427,6 +432,7 @@ export default function NavBar() {
                 "  border border-defult-button text-center shadow  hover:bg-defult-button/25 bg-defult-button/15 text-defult-button transition duration-300 block rounded-md w-full py-2 h-auto px-2"
               }
               onClick={() => {
+                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                 lang.isEnglish
                   ? lang.bangla()
                   : lang.isBangla
