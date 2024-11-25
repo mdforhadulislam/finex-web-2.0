@@ -59,7 +59,7 @@ const blogContent = [
 const OurBlogBodySection = () => {
 
   return (
-    <div className=" container h-auto py-10 px-4 sm:px-8 md:px-12 grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-2 items-center align-middle justify-center">
+    <div className=" container h-auto py-10 px-4 sm:px-8 md:px-12 grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-2 items-center align-middle justify-center m-auto">
       {blogContent.map((item) => (
         <Card
           key={item.id}
