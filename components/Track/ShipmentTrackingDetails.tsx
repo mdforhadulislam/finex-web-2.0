@@ -271,11 +271,7 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
                     {" - "}
                   </h1>
                   <p className="sm:w-[320px] text-sm font-normal text-left">
-                    {item?.tracking_detail
-                      .replace("FedEx", "Finex")
-                      .replace("DHL", "Finex")
-                      .replace("UPS", "Finex")
-                      .replace("ARAMEX", "Finex")}
+                    {item?.tracking_detail}
                   </p>
                   <h1 className="sm:w-[230px] text-right">
                     {" - "} {item?.location}
