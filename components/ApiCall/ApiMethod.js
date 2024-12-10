@@ -13,12 +13,16 @@ export const PUBLIC_TRACKING_API = (id) => `${ROOT_API_V1}track/${id}`;
 export const VISITOR_POST_API = `${ROOT_API_V1}utils/visitor/`
 
 
+const apiKey = `finex157705771418342144011930631910`
+
+
 export const getRequestSend = async (url, header) => {
   try {
     const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        'finex': apiKey,
         ...header,
       },
     });
@@ -35,6 +39,7 @@ export const postRequestSend = async (url, header, dataSend) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'finex': apiKey,
         ...header,
       },
       body: JSON.stringify(dataSend),
@@ -52,6 +57,7 @@ export const putRequestSend = async (url, header, dataSend) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        'finex': apiKey,
         ...header,
       },
       body: JSON.stringify(dataSend),
@@ -69,6 +75,7 @@ export const deleteRequestSend = async (url, header) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        'finex': apiKey,
         ...header,
       },
     });
