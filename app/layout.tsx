@@ -8,10 +8,11 @@ import UserTrackContext from "@/context/UserTrackContext";
 import Spriner from "@/utils/Spriner";
 import type { Metadata } from "next";
 import "./globals.css";
-
 export const metadata: Metadata = {
   title: "Finex - Home",
-  description: "",
+  description: "Finex provides fast, reliable, and affordable international shipping solutions, specializing in air and sea freight, custom clearance, and competitive pricing.",
+  keywords: "international shipping, affordable shipping solutions, air freight, sea freight, custom clearance, export rates, courier services in Surat, DHL rates comparison, FedEx shipping quotes, UPS shipping options, hassle-free logistics, professional shipping solutions, global shipping services, Surat logistics provider, fast delivery services, international export assistance, shipping quote comparison, reliable freight forwarding, express courier services, door-to-door shipping, efficient customs clearance, international package tracking, Surat freight services, cost-effective global logistics",
+  icons:["/icon.png"]
 };
 
 export default function RootLayout({

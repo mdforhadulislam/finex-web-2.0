@@ -20,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -57,6 +58,8 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState(true);
+
+  const router = useRouter();
 
   useEffect(() => {
     const getUserTrackData = window?.localStorage?.getItem("finex-user-track");
@@ -109,7 +112,17 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
       postRequestSend(VISITOR_POST_API, {}, userTrackData).then((res) => {
         if (res.status == 200) {
           toast.success(res.message);
-          window?.localStorage?.setItem("finex-user-track",JSON?.stringify(userTrackData));
+          window?.localStorage?.setItem(
+            "finex-user-track",
+            JSON?.stringify(userTrackData)
+          );
+          if (userTrackData.type == "B2B") {
+            router.push("/b2b");
+          }
+          if (userTrackData.type == "B2C") {
+            router.push("/");
+          }
+
           setOpen(false);
         } else {
           toast.success(res.message);
@@ -120,7 +133,6 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <UserTrackContext.Provider value={userTrackData}>
-      
       {children}
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogContent className="px-5 bg-transparent border-none">
