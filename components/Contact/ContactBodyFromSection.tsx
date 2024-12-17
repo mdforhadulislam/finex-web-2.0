@@ -107,14 +107,14 @@ const ContactBodyFromSection = () => {
 
       {/* English submit button */}
       <IsEnglish className="">
-        <button className="px-4 py-2 text-center text-[16.6px] shadow hover:bg-defult-button bg-defult-button text-white transition duration-300 block rounded-md w-full">
+        <button className="px-4 py-2 text-center text-[16.6px] shadow bg-defult hover:bg-defult/85 text-white transition duration-300 block rounded-md w-full">
           Send Message
         </button>
       </IsEnglish>
 
       {/* Bangla submit button */}
       <IsBangla className="">
-        <button className="px-4 py-[4px] bfont text-2xl text-center shadow hover:bg-defult-button bg-defult-button text-white transition duration-300 block rounded-md w-full">
+        <button className="px-4 py-[4px] bfont text-2xl text-center shadow  bg-defult hover:bg-defult/85 text-white transition duration-300 block rounded-md w-full">
           সেন্ড ম্যাসেজ
         </button>
       </IsBangla>
