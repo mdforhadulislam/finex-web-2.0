@@ -13,6 +13,16 @@ export const PUBLIC_TRACKING_API = (id) => `${ROOT_API_V1}track/${id}`;
 export const VISITOR_POST_API = `${ROOT_API_V1}utils/visitor/`
 
 
+export const RATE_CHART_API = `${ROOT_API_V1}price/`
+
+export const GET_SHIPPING_PRICE_QUOTE = (fromID, toID)=> `${RATE_CHART_API}${fromID}/${toID}/`
+
+
+
+export const COUNTRY_API = `${ROOT_API_V1}utils/country/`
+export const COUNTRY_SINGLE_API =(id)=> `${COUNTRY_API}${id}`
+
+
 const apiKey = `finex157705771418342144011930631910`
 
 

@@ -1,8 +1,13 @@
+import PriceBodySection from '@/components/Price/PriceBodySection'
+import PriceHeaderSection from '@/components/Price/PriceHeaderSection'
 import React from 'react'
 
 const Price = () => {
   return (
-    <div>Price</div>
+    <>
+    <PriceHeaderSection />
+    <PriceBodySection />
+    </>
   )
 }
 
