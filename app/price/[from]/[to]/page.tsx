@@ -3,7 +3,6 @@ import {
   GET_SHIPPING_PRICE_QUOTE,
   getRequestSend,
 } from "@/components/ApiCall/ApiMethod";
-import { Button } from "@/components/ui/button";
 import IsBangla from "@/utils/IsBangla";
 import IsEnglish from "@/utils/IsEnglish";
 import Link from "next/link";
@@ -478,105 +477,116 @@ const PriceGet = ({ params }: PriceGetProps) => {
         )}
 
         <IsEnglish className="">
-        <div className="w-full h-auto py-5">
-          <h1 className="text-lg font-semibold">
-            IMPORTANT NOTICE TO OUR VALUED CUSTOMERS
-          </h1>
-          <ul className=" list-decimal pl-6 flex flex-col gap-3 py-5">
-            <li>
-              <h1 className="text-base font-medium">Delivery Timeline:</h1>
-              <p className=" text-base font-light">
-                If you require additional time for product delivery, please
-                contact us in advance. We offer services that may require
-                extended timelines.
-              </p>
-            </li>
+          <div className="w-full h-auto py-5">
+            <h1 className="text-lg font-semibold">
+              IMPORTANT NOTICE TO OUR VALUED CUSTOMERS
+            </h1>
+            <ul className=" list-decimal pl-6 flex flex-col gap-3 py-5">
+              <li>
+                <h1 className="text-base font-medium">Delivery Timeline:</h1>
+                <p className=" text-base font-light">
+                  If you require additional time for product delivery, please
+                  contact us in advance. We offer services that may require
+                  extended timelines.
+                </p>
+              </li>
 
-            <li>
-              <h1  className="text-base font-medium">Applicable Rates</h1>
-              <ul  className=" list-decimal pl-4 flex flex-col gap-1">
-                <li className=" text-base font-light">
-                  The quoted rates apply only to garments, jute, and handicraft
-                  items.
-                </li>
-                <li className=" text-base font-light">For gift shipments, a 15% VAT will be added.</li>
-                <li>
-                  <h1  className="text-base font-medium">For other items such as shoes, bags, or ornaments:</h1>
-                  <ul  className="list-disc pl-4 flex flex-col gap-1">
-                    <li className=" text-base font-light">
-                      Add 20% for gift mode if the parcel contains non-clothing
-                      items.
-                    </li>
-                    <li className=" text-base font-light">
-                      If the parcel weighs below 10kg, a fixed charge of 3500
-                      BDT will be added.
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+              <li>
+                <h1 className="text-base font-medium">Applicable Rates</h1>
+                <ul className=" list-decimal pl-4 flex flex-col gap-1">
+                  <li className=" text-base font-light">
+                    The quoted rates apply only to garments, jute, and
+                    handicraft items.
+                  </li>
+                  <li className=" text-base font-light">
+                    For gift shipments, a 15% VAT will be added.
+                  </li>
+                  <li>
+                    <h1 className="text-base font-medium">
+                      For other items such as shoes, bags, or ornaments:
+                    </h1>
+                    <ul className="list-disc pl-4 flex flex-col gap-1">
+                      <li className=" text-base font-light">
+                        Add 20% for gift mode if the parcel contains
+                        non-clothing items.
+                      </li>
+                      <li className=" text-base font-light">
+                        If the parcel weighs below 10kg, a fixed charge of 3500
+                        BDT will be added.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
 
-            <li>
-              <h1  className="text-base font-medium">Prohibited Items</h1>
-              <p className=" text-base font-light">
-                Gold, silver, or any precious metals are strictly prohibited.
-                Any such items will be seized by customs authorities.
-              </p>
-            </li>
+              <li>
+                <h1 className="text-base font-medium">Prohibited Items</h1>
+                <p className=" text-base font-light">
+                  Gold, silver, or any precious metals are strictly prohibited.
+                  Any such items will be seized by customs authorities.
+                </p>
+              </li>
 
-            <li>
-              <h1  className="text-base font-medium">Address and Contact Information</h1>
-              <p className=" text-base font-light">
-                Please ensure you provide the correct address and phone number.
-                We cannot take responsibility for incorrect information.
-              </p>
-            </li>
-            <li>
-              <h1  className="text-base font-medium">CBM Charges</h1>
-              <p className=" text-base font-light">
-                If your item is measured in cubic meters (CBM), the applicable
-                CBM weight pricing will apply.
-              </p>
-            </li>
-            <li>
-              <h1  className="text-base font-medium">Product Missing or Damage Policy</h1>
-              <ul  className=" list-decimal pl-4 flex flex-col gap-1">
-                <li>
-                  
-                  <ul  className=" list-disc pl-4 flex flex-col gap-1">
-                  <h1  className="text-base font-medium">
-                    We are committed to providing the highest level of customer
-                    service. However, in the event of product loss or damage
-                    during export/import, please adhere to the following steps:
-                  </h1>
-                    <li className=" text-base font-light">
-                      Provide an accurate packing list before the package
-                      departure.
-                    </li >
-                    <li className=" text-base font-light">
-                      Upon receiving your package, ensure to take a short, uncut
-                      video during unboxing.
-                    </li>
-                    <li className=" text-base font-light">
-                      Without a proper uncut unboxing video, we will not be held
-                      liable for any claims.
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <p className=" text-base font-semibold">
-            We appreciate your cooperation in helping us maintain smooth and
-            reliable service. Thank you for choosing us as your logistics
-            partner!
-          </p>
-        </div>
+              <li>
+                <h1 className="text-base font-medium">
+                  Address and Contact Information
+                </h1>
+                <p className=" text-base font-light">
+                  Please ensure you provide the correct address and phone
+                  number. We cannot take responsibility for incorrect
+                  information.
+                </p>
+              </li>
+              <li>
+                <h1 className="text-base font-medium">CBM Charges</h1>
+                <p className=" text-base font-light">
+                  If your item is measured in cubic meters (CBM), the applicable
+                  CBM weight pricing will apply.
+                </p>
+              </li>
+              <li>
+                <h1 className="text-base font-medium">
+                  Product Missing or Damage Policy
+                </h1>
+                <ul className=" list-decimal pl-4 flex flex-col gap-1">
+                  <li>
+                    <ul className=" list-disc pl-4 flex flex-col gap-1">
+                      <h1 className="text-base font-medium">
+                        We are committed to providing the highest level of
+                        customer service. However, in the event of product loss
+                        or damage during export/import, please adhere to the
+                        following steps:
+                      </h1>
+                      <li className=" text-base font-light">
+                        Provide an accurate packing list before the package
+                        departure.
+                      </li>
+                      <li className=" text-base font-light">
+                        Upon receiving your package, ensure to take a short,
+                        uncut video during unboxing.
+                      </li>
+                      <li className=" text-base font-light">
+                        Without a proper uncut unboxing video, we will not be
+                        held liable for any claims.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p className=" text-base font-semibold">
+              We appreciate your cooperation in helping us maintain smooth and
+              reliable service. Thank you for choosing us as your logistics
+              partner!
+            </p>
+          </div>
         </IsEnglish>
 
         <IsBangla className="">
           <div className="w-full h-auto py-5">
-            <h1 className="bfont text-2xl">আমাদের সম্মানিত গ্রাহকদের জন্য গুরুত্বপূর্ণ বিজ্ঞপ্তি</h1>
+            <h1 className="bfont text-2xl">
+              আমাদের সম্মানিত গ্রাহকদের জন্য গুরুত্বপূর্ণ বিজ্ঞপ্তি
+            </h1>
             <ul className=" list-decimal pl-6 flex flex-col gap-3 py-5">
               <li>
                 <h1 className="bfont text-2xl">প্রযোজ্য হার</h1>
@@ -587,7 +597,9 @@ const PriceGet = ({ params }: PriceGetProps) => {
                   </li>
                   <li>গিফট শিপমেন্টের জন্য ১৫% ভ্যাট প্রযোজ্য হবে।</li>
                   <li>
-                    <h1  className="bfont text-2xl">জুতা, ব্যাগ বা গহনার মতো অন্যান্য আইটেমের জন্য:</h1>
+                    <h1 className="bfont text-2xl">
+                      জুতা, ব্যাগ বা গহনার মতো অন্যান্য আইটেমের জন্য:
+                    </h1>
                     <ul className=" list-decimal pl-4 flex flex-col gap-1">
                       <li>পোশাকবিহীন আইটেম থাকলে গিফট মোডে ২০% যোগ হবে।</li>
                       <li>
@@ -599,36 +611,38 @@ const PriceGet = ({ params }: PriceGetProps) => {
                 </ul>
               </li>
               <li>
-                <h1  className="bfont text-2xl">নিষিদ্ধ আইটেম</h1>
+                <h1 className="bfont text-2xl">নিষিদ্ধ আইটেম</h1>
                 <p>
                   স্বর্ণ, রূপা বা যে কোনো মূল্যবান ধাতু সম্পূর্ণ নিষিদ্ধ। এ
                   ধরনের আইটেম কাস্টম কর্তৃপক্ষ দ্বারা জব্দ করা হবে।
                 </p>
               </li>
               <li>
-                <h1  className="bfont text-2xl">ঠিকানা এবং যোগাযোগের তথ্য</h1>
+                <h1 className="bfont text-2xl">ঠিকানা এবং যোগাযোগের তথ্য</h1>
                 <p>
                   দয়া করে সঠিক ঠিকানা এবং ফোন নম্বর প্রদান করুন। ভুল তথ্যের
                   জন্য আমরা দায়ী থাকব না।
                 </p>
               </li>
               <li>
-                <h1  className="bfont text-2xl">সিবিএম চার্জ</h1>
+                <h1 className="bfont text-2xl">সিবিএম চার্জ</h1>
                 <p>
                   যদি আপনার পণ্য কিউবিক মিটার (CBM) হিসেবে মাপা হয়, তাহলে
                   প্রযোজ্য সিবিএম ওজন মূল্য প্রযোজ্য হবে।
                 </p>
               </li>
               <li>
-                <h1  className="bfont text-2xl">পণ্য হারানো বা ক্ষতির নীতিমালা</h1>
-                <ul  className=" list-disc pl-4 flex flex-col gap-1">
+                <h1 className="bfont text-2xl">
+                  পণ্য হারানো বা ক্ষতির নীতিমালা
+                </h1>
+                <ul className=" list-disc pl-4 flex flex-col gap-1">
                   <li>
-                  <h1 className="bfont text-2xl">
+                    <h1 className="bfont text-2xl">
                       আমরা সর্বোচ্চ মানের গ্রাহক পরিষেবা প্রদান করতে
                       প্রতিশ্রুতিবদ্ধ। তবে, এক্সপোর্ট/ইমপোর্টের সময় পণ্য হারানো
                       বা ক্ষতিগ্রস্ত হলে, নিম্নলিখিত ধাপগুলি অনুসরণ করুন:
                     </h1>
-                    <ul  className=" list-decimal pl-4 flex flex-col gap-1"> 
+                    <ul className=" list-decimal pl-4 flex flex-col gap-1">
                       <li>
                         পার্সেল পাঠানোর আগে সঠিক প্যাকিং তালিকা প্রদান করুন।
                       </li>
@@ -653,16 +667,7 @@ const PriceGet = ({ params }: PriceGetProps) => {
         </IsBangla>
       </div>
 
-
-
-
-      <div className="">
-
-
-
-
-
-      </div>
+      <div className=""></div>
     </div>
   );
 };
