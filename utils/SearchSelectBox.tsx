@@ -6,7 +6,7 @@ import { Fragment, useState } from "react";
 const SelecteSearchBox: React.FC<{
   title: string;
   datas: Array<{ name: string; _id: string }>;
-  setValue: (e) => void;
+  setValue: (e: unknown) => void;
   titleStyle?: string;
   value: string;
 }> = ({ title, datas, setValue, titleStyle, value }) => {
