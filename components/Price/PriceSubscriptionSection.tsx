@@ -20,11 +20,11 @@ const PriceSubscriptionSection = () => {
       <div className="w-full h-auto py-8">
         <div className="w-full h-auto grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-5">
           
-        <div className="w-full h-auto p-2 flex justify-center">
-            <div className=" w-[270px] h-[430px] bg-defult p-5 shadow-4xl rounded-lg relative group -ml-6">
+        <div className="w-full h-auto p-2 flex justify-center group">
+            <div className=" w-[270px] h-[430px] bg-defult p-5 shadow-4xl rounded-lg relative   group-hover:-ml-7 transition-all duration-200">
               <div className="w-[60px] h-[350px] bg-defult shadow-[12px_3px_14px_0px] text-black/35 rounded-tr-[50px] rounded-br-[50px] absolute top-10 left-0"></div>
 
-              <div className="w-[230px] h-[390px] bg-white group-hover:ml-10 rounded-md group-hover:shadow-[12px_3px_14px_0px] group-hover:text-black/50 transition-all duration-200">
+              <div className="w-[230px] h-[390px] bg-white group-hover:ml-12 rounded-md group-hover:shadow-[12px_3px_14px_0px] group-hover:text-black/50 transition-all duration-200">
                 <div className="w-full h-auto flex justify-center align-middle items-center text-white">
                   <IsEnglish className="w-full h-auto p-3 py-5 bg-defult/90 text-white rounded-md font-bold flex justify-center align-middle items-center flex-col gap-3">
                     <h1 className="text-lg">BASIC</h1>
@@ -76,11 +76,11 @@ const PriceSubscriptionSection = () => {
             </div>
           </div>
 
-          <div className="w-full h-auto p-2 flex justify-center">
-            <div className=" w-[270px] h-[430px] bg-defult p-5 shadow-4xl rounded-lg relative group -ml-6">
+          <div className="w-full h-auto p-2 flex justify-center group">
+            <div className=" w-[270px] h-[430px] bg-defult p-5 shadow-4xl rounded-lg relative   group-hover:-ml-7 transition-all duration-200">
               <div className="w-[60px] h-[350px] bg-defult shadow-[12px_3px_14px_0px] text-black/35 rounded-tr-[50px] rounded-br-[50px] absolute top-10 left-0"></div>
 
-              <div className="w-[230px] h-[390px] bg-white group-hover:ml-10 rounded-md group-hover:shadow-[12px_3px_14px_0px] group-hover:text-black/50 transition-all duration-200">
+              <div className="w-[230px] h-[390px] bg-white group-hover:ml-12 rounded-md group-hover:shadow-[12px_3px_14px_0px] group-hover:text-black/50 transition-all duration-200">
                 <div className="w-full h-auto flex justify-center align-middle items-center text-white">
                   <IsEnglish className="w-full h-auto p-3 py-5 bg-defult/90 text-white rounded-md font-bold flex justify-center align-middle items-center flex-col gap-3">
                     <h1 className="text-lg">STANDARD</h1>
@@ -132,11 +132,11 @@ const PriceSubscriptionSection = () => {
             </div>
           </div>
 
-          <div className="w-full h-auto p-2 flex justify-center">
-            <div className=" w-[270px] h-[430px] bg-defult p-5 shadow-4xl rounded-lg relative group -ml-6">
+          <div className="w-full h-auto p-2 flex justify-center group">
+            <div className=" w-[270px] h-[430px] bg-defult p-5 shadow-4xl rounded-lg relative   group-hover:-ml-7 transition-all duration-200">
               <div className="w-[60px] h-[350px] bg-defult shadow-[12px_3px_14px_0px] text-black/35 rounded-tr-[50px] rounded-br-[50px] absolute top-10 left-0"></div>
 
-              <div className="w-[230px] h-[390px] bg-white group-hover:ml-10 rounded-md group-hover:shadow-[12px_3px_14px_0px] group-hover:text-black/50 transition-all duration-200">
+              <div className="w-[230px] h-[390px] bg-white group-hover:ml-12 rounded-md group-hover:shadow-[12px_3px_14px_0px] group-hover:text-black/50 transition-all duration-200">
                 <div className="w-full h-auto flex justify-center align-middle items-center text-white">
                   <IsEnglish className="w-full h-auto p-3 py-5 bg-defult/90 text-white rounded-md font-bold flex justify-center align-middle items-center flex-col gap-3">
                     <h1 className="text-lg">PREMIUM</h1>
@@ -187,7 +187,6 @@ const PriceSubscriptionSection = () => {
               </div>
             </div>
           </div>
-
 
         </div>
       </div>

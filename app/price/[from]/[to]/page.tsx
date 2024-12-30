@@ -3,6 +3,7 @@ import {
   GET_SHIPPING_PRICE_QUOTE,
   getRequestSend,
 } from "@/components/ApiCall/ApiMethod";
+import PriceCBMCalculatorSction from "@/components/Price/PriceCBMCalculatorSction";
 import IsBangla from "@/utils/IsBangla";
 import IsEnglish from "@/utils/IsEnglish";
 import Link from "next/link";
@@ -667,7 +668,10 @@ const PriceGet = ({ params }: PriceGetProps) => {
         </IsBangla>
       </div>
 
-      <div className=""></div>
+      <div className="">
+        
+    <PriceCBMCalculatorSction />
+      </div>
     </div>
   );
 };
