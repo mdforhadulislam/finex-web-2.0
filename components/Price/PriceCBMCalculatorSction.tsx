@@ -14,7 +14,7 @@ const PriceCBMCalculatorSction = () => {
     acWeight:"",
   })
   const [isOpenPopup,setIsOpenPopup] = useState(false)
-  const [actualWeight, setActualWeight] = useState("")
+  // const [actualWeight, setActualWeight] = useState("")
 
   return (
     <div className=" container m-auto p-4 py-14">
@@ -53,7 +53,7 @@ const PriceCBMCalculatorSction = () => {
         </div>
 
 
-        <AlertDialog>
+        <AlertDialog open={isOpenPopup} onOpenChange={setIsOpenPopup}>
           
       <AlertDialogContent>
         <AlertDialogHeader>

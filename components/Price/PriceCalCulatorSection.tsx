@@ -55,8 +55,7 @@ const PriceCalCulatorSection = () => {
           <div className="w-full h-auto p-2">
             <SelecteSearchBox
               title="Ship From"
-              
-                      // @ts-ignore
+              // @ts-expect-error: Filtering out Bangladesh from the country list
               datas={allCountryList?.filter((item) =>
                 item?.name?.toLowerCase().includes("bangladesh")
               )}
@@ -66,8 +65,7 @@ const PriceCalCulatorSection = () => {
           <div className="w-full h-auto p-2">
             <SelecteSearchBox
               title="Ship To"
-              
-                      // @ts-ignore
+              // @ts-expect-error: Filtering out Bangladesh from the country list
               datas={allCountryList?.filter(
                 (item) => !item?.name?.toLowerCase().includes("bangladesh")
               )}
