@@ -59,7 +59,7 @@ const PriceCalCulatorSection = () => {
               datas={allCountryList?.filter((item) =>
                 item?.name?.toLowerCase().includes("bangladesh")
               )}
-              setValue={(e) => setSelectedFromCountry(e?._id)}
+              setValue={(e) => setSelectedFromCountry((e as Country)?._id)}
             />
           </div>
           <div className="w-full h-auto p-2">
@@ -69,7 +69,7 @@ const PriceCalCulatorSection = () => {
               datas={allCountryList?.filter(
                 (item) => !item?.name?.toLowerCase().includes("bangladesh")
               )}
-              setValue={(e) => setSelectedToCountry(e?._id)}
+              setValue={(e) => setSelectedToCountry((e as Country)?._id)}
             />
           </div>
         </div>
