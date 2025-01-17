@@ -1,3 +1,4 @@
+"use client"
 import IsBangla from '@/utils/IsBangla'
 import IsEnglish from '@/utils/IsEnglish'
 import React, { useState } from 'react'
@@ -5,15 +6,31 @@ import { IoLocation } from 'react-icons/io5'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useRouter } from 'next/navigation'
+import { useLoad } from '@/context/LoadContext'
+import { getRequestSend, PUBLIC_TRACKING_API } from '../ApiCall/ApiMethod'
+import { toast } from 'sonner'
 
 const ShipmentTrackingBox = () => {
   const router = useRouter();
 
   const [trackingNumber, setTrackingNumber] = useState("");
 
+  const load = useLoad()
+
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push(`/track/${trackingNumber}`);
+    load.loadingStart()
+    getRequestSend(PUBLIC_TRACKING_API(trackingNumber)).then(res=>{
+      load.loadingEnd()
+      if(res.status==200){
+        toast.success(res.message)
+        router.push(`/track/${trackingNumber}`);
+      }else{
+        toast.error(res.message)
+      }
+    })
+
+
   };
 
   return (

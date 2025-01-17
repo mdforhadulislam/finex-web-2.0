@@ -83,14 +83,7 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
     });
   }, [trackID]);
 
-  const checkTravelLength =
-    trackData?.track_info?.own_tracking_info?.courier_tracking != null &&
-    trackData?.track_info?.own_tracking_info?.courier_tracking.length >= 0
-      ? trackData?.track_info?.own_tracking_info?.courier_tracking[0]
-          ?.origin_info?.trackinfo?.length
-      : 0;
-
-  if (!checkTravelLength) {
+  if (!trackData) {
     return (
       <div className="text-center text-gray-500 font-semibold mb-20 px-2">
         We {"couldn't"} retrieve tracking information. If you need assistance,

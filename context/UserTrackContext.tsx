@@ -48,7 +48,7 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [userTrackData, setUserTrackData] = useState<UserTrackDataType>({
-    isDone: true,
+    isDone: false,
     name: "",
     phone: "",
     email: "",

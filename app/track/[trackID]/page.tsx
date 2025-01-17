@@ -6,7 +6,9 @@ import { useParams } from "next/navigation";
 
 const ShipmentTrack = () => {
   const searchParams = useParams();
-  const trackID = Array.isArray(searchParams.trackID) ? searchParams.trackID[0] : searchParams.trackID;
+  const trackID = Array.isArray(searchParams.trackID)
+    ? searchParams.trackID[0]
+    : searchParams.trackID;
 
   return (
     <div className="px-2">

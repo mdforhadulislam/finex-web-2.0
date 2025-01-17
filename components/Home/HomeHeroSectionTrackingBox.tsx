@@ -8,17 +8,32 @@ import { Fade } from "react-awesome-reveal";
 import { IoLocation } from "react-icons/io5";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { useLoad } from "@/context/LoadContext";
+import { getRequestSend, PUBLIC_TRACKING_API } from "../ApiCall/ApiMethod";
+import { toast } from "sonner";
 
 const HomeHeroSectionTrackingBox = () => {
   const router = useRouter();
 
   const [trackingNumber, setTrackingNumber] = useState("");
 
+  const load = useLoad()
+
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push(`/track/${trackingNumber}`);
-  };
+    load.loadingStart()
+    getRequestSend(PUBLIC_TRACKING_API(trackingNumber)).then(res=>{
+      load.loadingEnd()
+      if(res.status==200){
+        toast.success(res.message)
+        router.push(`/track/${trackingNumber}`);
+      }else{
+        toast.error(res.message)
+      }
+    })
 
+
+  };
   return (
     <Fade direction="up" duration={600}>
       <div className="w-full sm:w-auto md:w-[400px] lg:w-[450px] p-5 shadow-3xl bg-white rounded-lg border-defult">
