@@ -20,43 +20,43 @@ const solutionsFeatures = [
   {
     id: 1213,
     title: "Air Freight",
-    link: "/about/service/",
+    link: "/about/our-service/",
     titleBn: "বাই এয়ার",
   },
   {
     id: 3568,
     title: "Sea Freight",
-    link: "/about/service/",
+    link: "/about/our-service/",
     titleBn: "বাই সী",
   },
   {
     id: 4668,
     title: "Custom Clearnces",
-    link: "/about/service/",
+    link: "/about/our-service/",
     titleBn: "কাস্টম ক্লিয়ারেঞ্ছ",
   },
   {
     id: 89865,
     title: "Export Shipments",
-    link: "/about/service/",
+    link: "/about/our-service/",
     titleBn: "রপ্তানি চালান",
   },
   {
     id: 565465,
     title: "Courier Service",
-    link: "/about/service/",
+    link: "/about/our-service/",
     titleBn: "কুরিয়ার সার্ভিস",
   },
   {
     id: 565465,
     title: "Shipment Tracking",
-    link: "/about/service/",
+    link: "/about/our-service/",
     titleBn: "চালান ট্র্যাকিং",
   },
   {
     id: 565465,
     title: "Price Chart",
-    link: "/about/service/",
+    link: "/price/",
     titleBn: "মূল্য চার্ট তালিকা",
   },
 ];
@@ -65,43 +65,43 @@ const ourCompany = [
   {
     id: 1234513,
     title: "About Us",
-    link: "/about/service/",
+    link: "/about/why-finex/",
     titleBn: "আমাদের সম্পর্কে",
   },
   {
     id: 353468,
     title: "Our Blog",
-    link: "/about/service/",
+    link: "/blog/",
     titleBn: "আমাদের ব্লগ",
   },
   {
     id: 4245668,
     title: "Our Team",
-    link: "/about/service/",
+    link: "/about/our-team-member/",
     titleBn: "আমাদের দলের সদস্য",
   },
   {
     id: 565343465,
     title: "Help & Support",
-    link: "/about/service/",
+    link: "/about/help-&-support/",
     titleBn: "সহযোগিতা এবং সমর্থন",
   },
   {
     id: 56543465,
     title: "Trust & Safety",
-    link: "/about/service/",
+    link: "/about/trust&safety/",
     titleBn: "আস্থা ও নিরাপত্তা",
   },
   {
     id: 562354265,
     title: "Privacy Policy",
-    link: "/about/service/",
+    link: "/about/privacy-policy/",
     titleBn: "গোপনীয়তা নীতি",
   },
   {
     id: 562354265,
     title: "Refund Policy",
-    link: "/about/service/",
+    link: "/about/refund-policy/",
     titleBn: "ফেরত নীতি",
   },
 ];
@@ -180,7 +180,7 @@ const FooterBar = () => {
                           Phone:
                         </TableCell>
                         <TableCell className="font-medium pb-0">
-                          +880 1577-185840
+                          <a href="tel:+880 1577-185840">+880 1577-185840</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
@@ -188,7 +188,7 @@ const FooterBar = () => {
                           Email:
                         </TableCell>
                         <TableCell className="font-medium pb-0">
-                          faster.in.ex@gmail.com
+                          <a href="mailto:faster.in.ex@gmail.com">faster.in.ex@gmail.com</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
@@ -212,7 +212,7 @@ const FooterBar = () => {
                           মোবাইলঃ
                         </TableCell>
                         <TableCell className="font-medium pb-0  bfont text-[20px]">
-                          +৮৮০ ১৫৭৭-১৮৫৮৪০
+                        <a href="tel:+880 1577-185840">+৮৮০ ১৫৭৭-১৮৫৮৪০</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
@@ -220,7 +220,7 @@ const FooterBar = () => {
                           মেইলঃ
                         </TableCell>
                         <TableCell className="font-medium pb-0  bfont text-[20px]">
-                          faster.in.ex@gmail.com
+                        <a href="mailto:faster.in.ex@gmail.com">faster.in.ex@gmail.com</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
@@ -293,7 +293,7 @@ const FooterBar = () => {
                       <IoIosArrowForward className="w-5 h-5 hover:text-white duration-300 transition-all" />
                       <IsEnglish className="">
                         <Link
-                          href={"/"}
+                          href={item.link}
                           className=" text-base hover:text-white duration-300 transition-all"
                         >
                           {item.title}
@@ -301,7 +301,7 @@ const FooterBar = () => {
                       </IsEnglish>
                       <IsBangla className="">
                         <Link
-                          href={"/"}
+                          href={item.link}
                           className="bfont text-[22px] leading-6 hover:text-white duration-300 transition-all"
                         >
                           {item.titleBn}
@@ -335,7 +335,7 @@ const FooterBar = () => {
                       <IoIosArrowForward className="w-5 h-5 hover:text-white duration-300 transition-all" />
                       <IsEnglish className="">
                         <Link
-                          href={"/"}
+                          href={item.link}
                           className=" text-base hover:text-white duration-300 transition-all"
                         >
                           {item.title}
@@ -343,7 +343,7 @@ const FooterBar = () => {
                       </IsEnglish>
                       <IsBangla className="">
                         <Link
-                          href={"/"}
+                          href={item.link}
                           className="bfont text-[22px] leading-6 hover:text-white duration-300 transition-all"
                         >
                           {item.titleBn}
