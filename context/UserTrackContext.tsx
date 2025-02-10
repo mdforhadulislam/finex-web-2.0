@@ -20,9 +20,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useLoad } from "./LoadContext";
 
 interface UserTrackDataType {
   isDone: boolean;
@@ -59,7 +60,7 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState(true);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     const getUserTrackData = window?.localStorage?.getItem("finex-user-track");
@@ -71,6 +72,8 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
       setOpen(true);
     }
   }, []);
+
+  const load = useLoad()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -108,8 +111,11 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const handleSubmit = () => {
+    
     if (isValidForm()) {
+      load.loadingStart()
       postRequestSend(VISITOR_POST_API, {}, userTrackData).then((res) => {
+        load.loadingEnd()
         if (res.status == 200) {
           toast.success(res.message);
           window?.localStorage?.setItem(
@@ -117,10 +123,10 @@ const UserTrackContextProvider: React.FC<{ children: React.ReactNode }> = ({
             JSON?.stringify(userTrackData)
           );
           if (userTrackData.type == "B2B") {
-            router.push("/b2b");
+            // router.push("/b2b");
           }
           if (userTrackData.type == "B2C") {
-            router.push("/");
+            // router.push("/");
           }
 
           setOpen(false);

@@ -85,7 +85,6 @@ const PriceCalCulatorSection = () => {
                       selectedToCountry
                     )
                   ).then((res) => {
-                    load.loadingEnd();
                     if (res.status == 200) {
                       toast.success(res.message);
                       router.push(

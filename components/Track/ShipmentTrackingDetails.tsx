@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import ShipmentTrackParcelLocationBox from "./ShipmentTrackParcelLocationBox";
+import { useLoad } from "@/context/LoadContext";
 
 // Define the necessary types
 interface Parcel {
@@ -70,8 +71,11 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
 }) => {
   const [trackData, setTrackData] = useState<TrackData | null>(null);
 
+  const load = useLoad()
+
   useEffect(() => {
     getRequestSend(PUBLIC_TRACKING_API(trackID)).then((res) => {
+      load.loadingEnd()
       if (res.status === 200) {
         toast.success(res.message);
         setTrackData(

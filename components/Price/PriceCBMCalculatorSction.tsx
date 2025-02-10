@@ -93,7 +93,7 @@ const PriceCBMCalculatorSction = () => {
               const height = parseFloat(weightCalculator.height);
               const length = parseFloat(weightCalculator.length);
               const acWeight = parseFloat(weightCalculator.acWeight);
-              const cbm = Math.round((width * height * length) / 6000 + 0.5);
+              const cbm = Math.round((width * height * length) / 5000 + 0.5);
               const weight = Math.max(cbm, acWeight);
               setActualWeight(weight);
               setCbmWeight(cbm);

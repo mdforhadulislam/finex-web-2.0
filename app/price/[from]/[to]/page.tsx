@@ -4,6 +4,7 @@ import {
   getRequestSend,
 } from "@/components/ApiCall/ApiMethod";
 import PriceCBMCalculatorSction from "@/components/Price/PriceCBMCalculatorSction";
+import { useLoad } from "@/context/LoadContext";
 import IsBangla from "@/utils/IsBangla";
 import IsEnglish from "@/utils/IsEnglish";
 import Link from "next/link";
@@ -50,10 +51,9 @@ interface SChart {
   from?: Country;
   to?: Country;
   gift: number;
-  dhl?: WeightRates;
-  fedex?: WeightRates;
-  ups?: WeightRates;
-  aramex?: WeightRates;
+  premium?: WeightRates;
+  affordable?: WeightRates;
+  economy?: WeightRates;
 }
 
 const PriceGet = ({ params }: PriceGetProps) => {
@@ -62,13 +62,15 @@ const PriceGet = ({ params }: PriceGetProps) => {
   const [rateChart, setRateChart] = useState<SChart | null>(null);
 
   const [tab, setTab] = useState({
-    dhl: true,
-    fedex: false,
-    ups: false,
-    aramex: false,
+    premium: true,
+    affordable: false,
+    economy: false,
   });
 
+  const load = useLoad()
+
   useEffect(() => {
+    load.loadingEnd()
     getRequestSend(GET_SHIPPING_PRICE_QUOTE(from, to)).then((res) => {
       if (res.status == 200) {
         setRateChart(res.data);
@@ -107,41 +109,30 @@ const PriceGet = ({ params }: PriceGetProps) => {
             <select
               className="w-full px-3 py-[6px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none"
               onChange={(e) => {
-                if (e.target.value == "dhl") {
+                if (e.target.value == "premium") {
                   setTab({
-                    dhl: true,
-                    fedex: false,
-                    ups: false,
-                    aramex: false,
+                    premium: true,
+                    affordable: false,
+                    economy: false,
                   });
-                } else if (e.target.value == "fedex") {
+                } else if (e.target.value == "affordable") {
                   setTab({
-                    dhl: false,
-                    fedex: true,
-                    ups: false,
-                    aramex: false,
+                    premium: false,
+                    affordable: true,
+                    economy: false,
                   });
-                } else if (e.target.value == "ups") {
+                } else if (e.target.value == "economy") {
                   setTab({
-                    dhl: false,
-                    fedex: false,
-                    ups: true,
-                    aramex: false,
-                  });
-                } else if (e.target.value == "aramex") {
-                  setTab({
-                    dhl: false,
-                    fedex: false,
-                    ups: false,
-                    aramex: true,
+                    premium: false,
+                    affordable: false,
+                    economy: true,
                   });
                 }
               }}
             >
-              <option value={"dhl"}>Dhl</option>
-              <option value={"fedex"}>FedEx</option>
-              <option value={"ups"}>Ups</option>
-              <option value={"aramex"}>Aramex</option>
+              <option value={"premium"}>PREMIUM</option>
+              <option value={"affordable"}>PREMIUM</option>
+              <option value={"economy"}>ECONOMY</option>
             </select>
           </div>
           <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex ">
@@ -149,71 +140,54 @@ const PriceGet = ({ params }: PriceGetProps) => {
               className="w-full focus-within:z-10 cursor-pointer"
               onClick={() => {
                 setTab({
-                  dhl: true,
-                  fedex: false,
-                  ups: false,
-                  aramex: false,
+                  premium: true,
+                  affordable: false,
+                  economy: false,
                 });
               }}
             >
               <span className="inline-block w-full p-3  bg-defult hover:bg-defult/85 text-white border-r rounded-s-lg">
-                Dhl
+              PREMIUM
               </span>
             </li>
             <li
               className="w-full focus-within:z-10 cursor-pointer "
               onClick={() => {
                 setTab({
-                  dhl: false,
-                  fedex: true,
-                  ups: false,
-                  aramex: false,
+                  premium: false,
+                  affordable: true,
+                  economy: false,
                 });
               }}
             >
               <span className="inline-block w-full p-3  bg-defult hover:bg-defult/85 text-white border-r">
-                Fedex
+              AFFORDABLE
               </span>
             </li>
             <li
               className="w-full focus-within:z-10 cursor-pointer"
               onClick={() => {
                 setTab({
-                  dhl: false,
-                  fedex: false,
-                  ups: true,
-                  aramex: false,
+                  premium: false,
+                  affordable: false,
+                  economy: true,
                 });
               }}
             >
               <span className="inline-block w-full p-3  bg-defult hover:bg-defult/85 text-white border-r">
-                Ups
+              ECONOMY
               </span>
             </li>
-            <li
-              className="w-full focus-within:z-10 cursor-pointer"
-              onClick={() => {
-                setTab({
-                  dhl: false,
-                  fedex: false,
-                  ups: false,
-                  aramex: true,
-                });
-              }}
-            >
-              <span className="inline-block w-full p-3 bg-defult hover:bg-defult/85 text-white  rounded-e-lg ">
-                Aramex
-              </span>
-            </li>
+         
           </ul>
         </div>
 
-        {tab.dhl && (
+        {tab.premium && (
           <>
-            <h1 className="text-lg font-semibold ">DHL SHIPPING RATE</h1>
+            <h1 className="text-lg font-semibold ">PREMIUM SHIPPING RATE</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-2 pt-3 pb-3">
-              {Object.entries(rateChart?.dhl ?? {}).map(([name, value]) => (
+              {Object.entries(rateChart?.premium ?? {}).map(([name, value]) => (
                 <div
                   key={name}
                   className="w-full h-auto flex justify-between items-center align-middle border p-2 text-lg"
@@ -275,12 +249,12 @@ const PriceGet = ({ params }: PriceGetProps) => {
             </div>
           </>
         )}
-        {tab.fedex && (
+        {tab.affordable && (
           <>
-            <h1 className="text-lg font-semibold ">FEDEX SHIPPING RATE</h1>
+            <h1 className="text-lg font-semibold ">AFFORDABLE SHIPPING RATE</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-2 pt-3 pb-3">
-              {Object.entries(rateChart?.fedex ?? {}).map(([name, value]) => (
+              {Object.entries(rateChart?.affordable ?? {}).map(([name, value]) => (
                 <div
                   key={name}
                   className="w-full h-auto flex justify-between items-center align-middle border p-2 text-lg"
@@ -342,12 +316,12 @@ const PriceGet = ({ params }: PriceGetProps) => {
             </div>
           </>
         )}
-        {tab.ups && (
+        {tab.economy && (
           <>
-            <h1 className="text-lg font-semibold ">UPS SHIPPING RATE</h1>
+            <h1 className="text-lg font-semibold ">ECONOMY SHIPPING RATE</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-2 pt-3 pb-3">
-              {Object.entries(rateChart?.ups ?? {}).map(([name, value]) => (
+              {Object.entries(rateChart?.economy ?? {}).map(([name, value]) => (
                 <div
                   key={name}
                   className="w-full h-auto flex justify-between items-center align-middle border p-2 text-lg"
@@ -409,73 +383,7 @@ const PriceGet = ({ params }: PriceGetProps) => {
             </div>
           </>
         )}
-        {tab.aramex && (
-          <>
-            <h1 className="text-lg font-semibold ">ARAMEX SHIPPING RATE</h1>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-2 pt-3 pb-3">
-              {Object.entries(rateChart?.aramex ?? {}).map(([name, value]) => (
-                <div
-                  key={name}
-                  className="w-full h-auto flex justify-between items-center align-middle border p-2 text-lg"
-                >
-                  <div>
-                    {" "}
-                    {name == "gm500"
-                      ? "500 GM"
-                      : name == "gm1000"
-                      ? "1 KG"
-                      : name == "gm1500"
-                      ? "1.5 KG"
-                      : name == "gm1500"
-                      ? "1.5 KG"
-                      : name == "gm2000"
-                      ? "2 KG"
-                      : name == "gm2500"
-                      ? "2.5 KG"
-                      : name == "gm3000"
-                      ? "3 KG"
-                      : name == "gm3500"
-                      ? "3.5 KG"
-                      : name == "gm4000"
-                      ? "4 KG"
-                      : name == "gm4500"
-                      ? "4.5 KG"
-                      : name == "gm5000"
-                      ? "5 KG"
-                      : name == "gm5500"
-                      ? "5.5 KG"
-                      : name == "kg6to10"
-                      ? "6 TO 10 PER KG"
-                      : name == "kg11to15"
-                      ? "11 TO 15 PER KG"
-                      : name == "kg16to20"
-                      ? "16 TO 20 PER KG"
-                      : name == "kg21to25"
-                      ? "21 TO 25 PER KG"
-                      : name == "kg26to30"
-                      ? "26 TO 30 PER KG"
-                      : name == "kg31to40"
-                      ? "31 TO 40 PER KG"
-                      : name == "kg41to50"
-                      ? "41 TO 50 PER KG"
-                      : name == "kg51to80"
-                      ? "51 TO 80 PER KG"
-                      : name == "kg81to100"
-                      ? "81 TO 100 PER KG"
-                      : name == "kg101to500"
-                      ? "101 TO 500 PER KG"
-                      : name == "kg501to1000"
-                      ? "501 TO 1000 PER KG"
-                      : ""}{" "}
-                  </div>
-
-                  <div> = {value} TK</div>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+       
 
         <IsEnglish className="">
           <div className="w-full h-auto py-5">

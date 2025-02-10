@@ -23,7 +23,6 @@ const HomeHeroSectionTrackingBox = () => {
     e.preventDefault()
     load.loadingStart()
     getRequestSend(PUBLIC_TRACKING_API(trackingNumber)).then(res=>{
-      load.loadingEnd()
       if(res.status==200){
         toast.success(res.message)
         router.push(`/track/${trackingNumber}`);
