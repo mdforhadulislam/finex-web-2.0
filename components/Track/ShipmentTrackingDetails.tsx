@@ -70,6 +70,7 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
   trackID,
 }) => {
   const [trackData, setTrackData] = useState<TrackData | null>(null);
+  const [resMessage , setResMessage]= useState("")
 
   const load = useLoad()
 
@@ -77,6 +78,7 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
     getRequestSend(PUBLIC_TRACKING_API(trackID)).then((res) => {
       load.loadingEnd()
       if (res.status === 200) {
+        setResMessage(res.message)
         toast.success(res.message);
         setTrackData(
           res.data?.order_info ? res.data : { track_info: res.data }
@@ -85,9 +87,9 @@ export const ShipmentTrackingDetails: React.FC<{ trackID: string }> = ({
         toast.error(res.message);
       }
     });
-  }, [trackID]);
+  }, [trackID, load]);
 
-  if (!trackData) {
+  if (!trackData || resMessage == "Track Data Not Found") {
     return (
       <div className="text-center text-gray-500 font-semibold mb-20 px-2">
         We {"couldn't"} retrieve tracking information. If you need assistance,

@@ -6,7 +6,7 @@ const PriceBodySection = () => {
   return (
     <div className=" w-full p-2 sm:container h-auto m-auto">
       <PriceCalCulatorSection />
-      <PriceSubscriptionSection />
+      {/* <PriceSubscriptionSection /> */}
       <HomeCustomerReview />
     </div>
   );

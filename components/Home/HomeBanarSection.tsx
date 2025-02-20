@@ -6,7 +6,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import SLIDERIMAGE1 from "@/components/assets/shipping-solution-03.jpg";
+import SLIDERIMAGE1 from "../../public/slider-1.jpg";
 
 const HomeBanarSection = () => {
   return (
@@ -17,10 +17,10 @@ const HomeBanarSection = () => {
             {Array.from({ length: 5 }).map((_, index) => (
               <CarouselItem key={index}>
                 <div
-                  className="w-full h-[250px] p-2 bg-cover rounded-lg bg-no-repeat bg-center"
+                  className="w-full h-[250px] md:h-[550px] p-2 bg-cover rounded-lg bg-no-repeat bg-center"
                   style={{ backgroundImage: `url(${SLIDERIMAGE1.src})` }}
                 >
-                  12
+                  
                 </div>
               </CarouselItem>
             ))}

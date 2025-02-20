@@ -15,6 +15,7 @@ import { IoLogoLinkedin } from "react-icons/io5";
 import { LuInstagram } from "react-icons/lu";
 import { SiWhatsapp } from "react-icons/si";
 import { Button } from "../ui/button";
+import { FaYoutube } from "react-icons/fa";
 
 const solutionsFeatures = [
   {
@@ -179,8 +180,9 @@ const FooterBar = () => {
                         <TableCell className="font-medium pl-0 pb-0">
                           Phone:
                         </TableCell>
-                        <TableCell className="font-medium pb-0">
-                          <a href="tel:+880 1577-185840">+880 1577-185840</a>
+                        <TableCell className="font-medium pb-0 flex gap-2">
+                          <a href="tel:+880 1577-057714">+880 1645-034000,</a>
+                          <a href="tel:+880 1577-057714">+880 1577-057714</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
@@ -188,7 +190,7 @@ const FooterBar = () => {
                           Email:
                         </TableCell>
                         <TableCell className="font-medium pb-0">
-                          <a href="mailto:faster.in.ex@gmail.com">faster.in.ex@gmail.com</a>
+                          <a href="mailto:finex.in.ex@gmail.com">finex.in.ex@gmail.com</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
@@ -196,8 +198,7 @@ const FooterBar = () => {
                           Location:
                         </TableCell>
                         <TableCell className="font-medium pb-0">
-                          Ground Floor, House-19, Road-12, Sector-01, Uttora,
-                          Dhaka-1230, Bangladesh
+                           House-193 {" "}(Ground Floor),{" "} Road-01,{" "} Mohakhali DOHS, {" "}Dhaka-1206, {" "}Bangladesh
                         </TableCell>
                       </TableRow>
                     </TableBody>
@@ -211,16 +212,17 @@ const FooterBar = () => {
                         <TableCell className="font-medium pl-0 pb-0  bfont text-[20px]">
                           মোবাইলঃ
                         </TableCell>
-                        <TableCell className="font-medium pb-0  bfont text-[20px]">
-                        <a href="tel:+880 1577-185840">+৮৮০ ১৫৭৭-১৮৫৮৪০</a>
+                        <TableCell className="font-medium pb-0  bfont text-[20px] flex gap-2">
+                        <a href="tel:+880 1577-057714" className="font-medium pb-0  bfont text-[20px]">+৮৮০ ১৬৪৫-০৩৪০০০,</a>
+                        <a href="tel:+880 1577-057714" className="font-medium pb-0  bfont text-[20px]">+৮৮০ ১৫৭৭-০৫৭৭১৪</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
                         <TableCell className="font-medium pl-0 pb-0  bfont text-[20px]">
                           মেইলঃ
                         </TableCell>
-                        <TableCell className="font-medium pb-0  bfont text-[20px]">
-                        <a href="mailto:faster.in.ex@gmail.com">faster.in.ex@gmail.com</a>
+                        <TableCell className="font-medium pb-0  bfont">
+                        <a href="mailto:finex.in.ex@gmail.com">finex.in.ex@gmail.com</a>
                         </TableCell>
                       </TableRow>
                       <TableRow className="border-0 hover:bg-transparent">
@@ -228,8 +230,7 @@ const FooterBar = () => {
                           লোকেশনঃ
                         </TableCell>
                         <TableCell className="font-medium pb-0 bfont text-[20px]">
-                          গ্রাউন্ড ফ্লোর, হাউস-১৯, রোড-১২, সেক্তর-০১, ঢাকা-১২৩০,
-                          বাংলাদেশ
+                           হাউস-১৯৩ (গ্রাউন্ড ফ্লোর),{" "}রোড-০১, {" "}মহাখালী {" "} ডিওএইচএস,{" "} ঢাকা-১২০৬, {" "}বাংলাদেশ
                         </TableCell>
                       </TableRow>
                     </TableBody>
@@ -247,7 +248,7 @@ const FooterBar = () => {
                     <FaFacebook className="w-8 h-8 text-blue-600 shadow-3xl" />
                   </Link>
                   <Link
-                    href={"https://www.instagram.com/finex.int.ex/"}
+                    href={"https://www.instagram.com/finex.ltd/"}
                     target="_blank"
                     className="w-10 h-10 p-[6px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center"
                   >
@@ -266,6 +267,14 @@ const FooterBar = () => {
                     className="w-10 h-10 p-[7px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center"
                   >
                     <IoLogoLinkedin className="w-8 h-8 text-blue-600 shadow-3xl" />
+                  </Link>
+                  <Link
+                    href={"https://www.youtube.com/@finexltd"}
+                    target="_blank"
+                    className="w-10 h-10 p-[4px] bg-white rounded-full shadow-3xl  flex justify-center align-middle items-center"
+                  >
+                    <FaYoutube className="w-9 h-9 text-red-600 shadow-3xl" />
+                   
                   </Link>
                 </div>
               </Fade>

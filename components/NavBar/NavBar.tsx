@@ -319,13 +319,10 @@ export default function NavBar() {
                           </div>
                           <p className="text-sm leading-tight text-muted-foreground">
                             <IsEnglish className="">
-                              Beautifully designed components built with Radix
-                              UI and Tailwind CSS.
+                            Delivering seamless, reliable, and personalized shipping solutions with unmatched flexibility and a strong courier network since 2023.
                             </IsEnglish>
                             <IsBangla className={"bfont text-[19px]"}>
-                              অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
-                              স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা
-                              বাক্যাংশ প্রদান করে
+                            ২০২৩ সাল থেকে অবিচ্ছিন্ন, নির্ভরযোগ্য এবং ব্যক্তিগতকৃত শিপিং সমাধান প্রদান করছি, অমীমাংসিত নমনীয়তা এবং শক্তিশালী কুরিয়ার নেটওয়ার্কের সাথে।
                             </IsBangla>
                           </p>
                         </Link>
@@ -334,15 +331,12 @@ export default function NavBar() {
 
                     <IsEnglish className="">
                       <ListItem href="/about/why-finex" title="Why Finex">
-                        Re-usable components built using Radix UI and Tailwind
-                        CSS.
+                      Delivering seamless, reliable, and personalized shipping solutions with unmatched flexibility and a strong courier network since 2023.
                       </ListItem>
                     </IsEnglish>
                     <IsBangla className="">
                       <ListItem href="/about/why-finex" title="কেন ফিনেক্স">
-                        অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
-                        স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
-                        প্রদান করে
+                      ২০২৩ সাল থেকে অদ্বিতীয় নমনীয়তা এবং শক্তিশালী কুরিয়ার নেটওয়ার্কসহ সুনির্দিষ্ট, নির্ভরযোগ্য এবং ব্যক্তিগতকৃত শিপিং সমাধান প্রদান করছি।
                       </ListItem>
                     </IsBangla>
 
@@ -351,7 +345,7 @@ export default function NavBar() {
                         href="/about/work-process"
                         title="Work Processes"
                       >
-                        Styles for headings, paragraphs, lists...etc
+                        From order placement and courier assignment to real-time tracking and prompt delivery, we ensure a seamless and efficient shipping experience.
                       </ListItem>
                     </IsEnglish>
 
@@ -360,15 +354,13 @@ export default function NavBar() {
                         href="/about/work-process"
                         title="কাজের প্রক্রিয়া"
                       >
-                        অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
-                        স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
-                        প্রদান করে
+                        অর্ডার প্লেসমেন্ট এবং কুরিয়ার অ্যাসাইনমেন্ট থেকে রিয়েল-টাইম ট্র্যাকিং এবং সময়মতো ডেলিভারি পর্যন্ত, আমরা একটি সুনির্দিষ্ট এবং দক্ষ শিপিং অভিজ্ঞতা নিশ্চিত করি।
                       </ListItem>
                     </IsBangla>
 
                     <IsEnglish className="">
                       <ListItem href="/about/our-services" title="Our Services">
-                        How to install dependencies and structure your app.
+                      Providing fast, reliable, and flexible courier solutions with personalized delivery options and real-time tracking to meet all your shipping needs.
                       </ListItem>
                     </IsEnglish>
                     <IsBangla className="">
@@ -376,9 +368,7 @@ export default function NavBar() {
                         href="/about/our-services"
                         title="আমাদের সেবা সমূহ"
                       >
-                        অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
-                        স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
-                        প্রদান করে
+                        দ্রুত, নির্ভরযোগ্য, এবং নমনীয় কুরিয়ার সমাধান প্রদান করছি, ব্যক্তিগতকৃত ডেলিভারি অপশন এবং রিয়েল-টাইম ট্র্যাকিং সহ, যা আপনার সমস্ত শিপিং চাহিদা পূর্ণ করে।
                       </ListItem>
                     </IsBangla>
 
@@ -387,7 +377,7 @@ export default function NavBar() {
                         href="/about/our-team-member"
                         title="Our Team Member"
                       >
-                        Styles for headings, paragraphs, lists...etc
+                        A dedicated group of skilled professionals working together to deliver exceptional service, ensuring efficiency, reliability, and customer satisfaction at every step.
                       </ListItem>
                     </IsEnglish>
                     <IsBangla className="">
@@ -395,9 +385,7 @@ export default function NavBar() {
                         href="/about/our-team-member"
                         title="আমাদের সদস্য"
                       >
-                        অটো টেক্সট বা স্বয়ংক্রিয় পূরণ প্রযুক্তি
-                        স্বয়ংক্রিয়ভাবে পূর্ণ বা প্রস্তাবিত শব্দ বা বাক্যাংশ
-                        প্রদান করে
+                       একটি নিবেদিত দক্ষ পেশাদার দলের সদস্যরা একসঙ্গে কাজ করে অসাধারণ সেবা প্রদান করতে, প্রতিটি পদক্ষেপে দক্ষতা, নির্ভরযোগ্যতা এবং গ্রাহক সন্তুষ্টি নিশ্চিত করে।
                       </ListItem>
                     </IsBangla>
                   </ul>

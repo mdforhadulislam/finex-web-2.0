@@ -1,7 +1,7 @@
 "use client"
 import IsBangla from '@/utils/IsBangla'
 import IsEnglish from '@/utils/IsEnglish'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoLocation } from 'react-icons/io5'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -10,7 +10,11 @@ import { useLoad } from '@/context/LoadContext'
 import { getRequestSend, PUBLIC_TRACKING_API } from '../ApiCall/ApiMethod'
 import { toast } from 'sonner'
 
-const ShipmentTrackingBox = () => {
+interface ShipmentTrackingBoxProps {
+  isTrackPage: boolean;
+}
+
+const ShipmentTrackingBox: React.FC<ShipmentTrackingBoxProps> = ({ isTrackPage }) => {
   const router = useRouter();
 
   const [trackingNumber, setTrackingNumber] = useState("");
@@ -33,8 +37,12 @@ const ShipmentTrackingBox = () => {
 
   };
 
+  useEffect(()=>{
+    load.loadingEnd()
+  },[load])
+
   return (
-    <div className=' container m-auto pt-24 pb-10'>
+    <div className={`container m-auto ${isTrackPage ? "pt-10": "pt-24" }  pb-10`}>
         <div className="w-full sm:w-auto p-5 shadow-3xl bg-white rounded-lg border-defult">
         <div className="w-full h-auto">
           

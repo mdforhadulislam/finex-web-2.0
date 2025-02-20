@@ -39,12 +39,12 @@ const PriceCalCulatorSection = () => {
     <>
       <div className="w-full h-auto px-4 pt-16 m-auto pb-24">
         <IsEnglish className="w-full h-auto flex justify-center align-middle items-center pb-8">
-          <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-defult text-center">
+          <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-defult text-center">
             PRICE CALCULATOR
           </h1>
         </IsEnglish>
         <IsBangla className="w-full h-auto flex justify-center align-middle items-center pb-6">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-defult bfont text-center">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-defult bfont text-center">
             প্রাইস ক্যালকুলেটর
           </h1>
         </IsBangla>
