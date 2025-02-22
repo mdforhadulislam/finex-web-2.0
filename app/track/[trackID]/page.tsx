@@ -12,7 +12,7 @@ const ShipmentTrack = () => {
 
   return (
     <div className="px-2">
-      <ShipmentTrackingBox />
+      <ShipmentTrackingBox isTrackPage={false} />
       <ShipmentTrackingDetails trackID={trackID} />
     </div>
   );
