@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
+import Image from "next/image";
 
 const blogContent = [
   {
@@ -65,13 +66,14 @@ const OurBlogBodySection = () => {
           key={item.id}
           className="w-full flex-col gap-2 shadow-4xl cursor-pointer flex"
         >
-          <div className="w-full h-auto">
-            <img
+
+            <Image
               className="rounded-t-xl w-full h-[200px]"
               src={item.img}
               alt={item.title}
+              width={200}
+              height={200}
             />
-          </div>
           <div className=" w-full h-auto flex flex-col gap-1 p-2 text-left">
             <h1 className=" text-lg font-semibold text-gray-800 leading-4">
               {item.title}

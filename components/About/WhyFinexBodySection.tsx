@@ -85,9 +85,11 @@ const WhyFinexBodySection = () => {
           {/* Image section */}
           <div className="w-full md:w-[50%] lg:w-[35%] h-auto flex justify-center align-middle items-center p-3">
             {/* Image component */}
-            <img
-              src={"/delivery-man.png"}
+            <Image
+              src="/delivery-man.png"
               alt="Delivery-Man"
+              width={380}
+              height={450}
               className="w-[300px] h-[400px] md:w-[350px] md:h-[450px] lg:w-[380px] lg:h-[450px]"
             />
           </div>

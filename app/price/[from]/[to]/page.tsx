@@ -76,7 +76,7 @@ const PriceGet = ({ params }: PriceGetProps) => {
         setRateChart(res.data);
       }
     });
-  }, []);
+  }, [from, load, to]);
 
   return (
     <div>
